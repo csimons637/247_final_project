@@ -1,6 +1,6 @@
 [
     {
-        "id": "d5f5396a-8b74-4c62-8d1f-1a52a5f1908f",
+        "hotel_id": "d5f5396a-8b74-4c62-8d1f-1a52a5f1908f",
         "name": "Motel 6",
         "rooms":
             [
@@ -67,7 +67,7 @@
             ]
     },
     {
-        "id": "58cb2fcc-7608-415b-bba0-94978a75f6ab",
+        "hotel_id": "58cb2fcc-7608-415b-bba0-94978a75f6ab",
         "name": "4 Seasons Manhattan",
         "rooms":
             [
@@ -135,7 +135,7 @@
             ]
     },
     {
-        "id": "483ff49a-084d-49d9-8f1e-0cabc2b8d293",
+        "hotel_id": "483ff49a-084d-49d9-8f1e-0cabc2b8d293",
         "name": "Hyatt Regency",
         "rooms":
             [
@@ -202,7 +202,7 @@
             ]
     },
     {
-        "id": "c552dad9-7a98-4123-82ae-b7737eff7e86",
+        "hotel_id": "c552dad9-7a98-4123-82ae-b7737eff7e86",
         "name": "Sandra's Bed and Breakfast",
         "rooms":
             [
@@ -269,7 +269,7 @@
             ]
     },
     {
-        "id": "044262c3-3866-48fc-883f-dc6364c8081a",
+        "hotel_id": "044262c3-3866-48fc-883f-dc6364c8081a",
         "name": "Marriott",
         "rooms":
             [
