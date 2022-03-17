@@ -6,6 +6,7 @@
         "airline": "Delta",
         "destination": "CLT",
         "departure": "CAE",
+        "depart_date":"4/2/2022",
         "depart_time": "10:56",
         "arrival_time": "12:29",
         "seats":
@@ -26,6 +27,7 @@
         "airline": "American Air",
         "destination": "LAX",
         "departure": "LAS",
+        "depart_date":"3/28/2022",
         "depart_time": "07:33",
         "arrival_time": "08:58",
         "seats":
@@ -46,6 +48,7 @@
         "airline": "Spirit",
         "destination": "CLT",
         "departure": "LAS",
+        "depart_date":"3/17/2022",
         "depart_time": "13:14",
         "arrival_time": "18:39",
         "seats":
@@ -66,6 +69,7 @@
         "airline": "Air France",
         "destination": "JFK",
         "departure": "CLT",
+        "depart_date":"4/11/2022",
         "depart_time": "15:13",
         "arrival_time": "17:38",
         "seats":
@@ -86,6 +90,7 @@
         "airline": "United",
         "destination": "LAX",
         "departure": "JFK",
+        "depart_date":"4/1/2022",
         "depart_time": "06:23",
         "arrival_time": "12:54",
         "seats":

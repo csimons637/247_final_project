@@ -14,11 +14,12 @@ public class DataConstants {
     protected static final String FRIEND_ID = "friend_id";
     // Flights Constats
     protected static final String FLIGHT_ID = "flight_id";
-    protected static final String FLIGHT = "flight_number";
+    protected static final String FLIGHT_NUM = "flight_number";
     protected static final String PLANE = "plane";
     protected static final String AIRLINE = "airline";
     protected static final String DEST = "destination";
     protected static final String DEPART = "departure";
+    protected static final String DEP_DATE = "depart_date";
     protected static final String DEPART_TIME = "depart_time";
     protected static final String ARRIVAL_TIME = "arrival_time";
     protected static final String SEATS = "seats";
