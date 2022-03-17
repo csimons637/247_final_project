@@ -56,12 +56,6 @@ public class DataLoader extends DataConstants {
         return null;
     }
 
-    public static void displayFlights(ArrayList<Flight> flights) {
-        for (Flight f : flights) {
-            System.out.println(f);
-        }
-    }
-
 
     // Loads Hotels (and their rooms) from hotels.json
     public static ArrayList<Hotels> getHotels() {
