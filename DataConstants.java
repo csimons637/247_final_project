@@ -28,6 +28,7 @@ public class DataConstants {
     protected static final String HOTEL_NAME = "name";
     protected static final String ROOMS = "rooms";
     protected static final String ROOM_NUM = "number";
+    protected static final String RM_TYPE = "type";
     protected static final String ROOM_AVAIL = "availability";
     // Friends Constants
     protected static final String FIRST = "first_name";
