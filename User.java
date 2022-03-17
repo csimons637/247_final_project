@@ -14,15 +14,15 @@ abstract class User {
         this.birthdate = birthdate;
     }
 
-    protected void setFirstName {
+    protected void setFirstName() {
 
     }
 
-    protected void setLastName {
+    protected void setLastName() {
 
     }
 
-    protected void makePassport {
+    protected void makePassport() {
         
     }
 }
