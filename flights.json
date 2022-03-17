@@ -1,0 +1,107 @@
+[
+    {
+        "flight_id":"751172e4-df77-4459-ac40-b023f0fae981",
+        "flight_number": 1278,
+        "plane":"Boeing 737-800",
+        "airline": "Delta",
+        "destination": "CLT",
+        "departure": "CAE",
+        "depart_date":"4/2/2022",
+        "depart_time": "10:56",
+        "arrival_time": "12:29",
+        "seats":
+        [
+                {
+                "1A":true,  "1B":true,  "1C":false, "1D":false, "1E":true,
+                "2A":false, "2B":false, "2C":false, "2D":false, "2E":true,
+                "3A":false, "3B":false, "3C":false, "3D":true, "3E":true,
+                "4A":true, "4B":false, "4C":false, "4D":true, "4E":false,
+                "5A":false, "5B":true, "5C":true, "5D":false, "5E":true
+                }
+        ]
+    },
+    {
+        "flight_id":"987c3091-bd31-4f64-aec9-447383c80d72",
+        "flight_number": 4329,
+        "plane":"Airbus A320-200",
+        "airline": "American Air",
+        "destination": "LAX",
+        "departure": "LAS",
+        "depart_date":"3/28/2022",
+        "depart_time": "07:33",
+        "arrival_time": "08:58",
+        "seats":
+        [
+                {
+                "1A":true,  "1B":true,  "1C":false, "1D":false, "1E":true,
+                "2A":false, "2B":false, "2C":false, "2D":false, "2E":true,
+                "3A":false, "3B":false, "3C":false, "3D":true, "3E":true,
+                "4A":true, "4B":false, "4C":false, "4D":true, "4E":false,
+                "5A":false, "5B":true, "5C":true, "5D":false, "5E":true
+                }
+        ]
+    },
+    {
+        "flight_id":"c8ccac40-1a9c-4dfe-acda-560747e25a21",
+        "flight_number": 210,
+        "plane":"McDonnel Douglas MD-80",
+        "airline": "Spirit",
+        "destination": "CLT",
+        "departure": "LAS",
+        "depart_date":"3/17/2022",
+        "depart_time": "13:14",
+        "arrival_time": "18:39",
+        "seats":
+        [
+                {
+                "1A":true,  "1B":true,  "1C":false, "1D":false, "1E":true,
+                "2A":false, "2B":false, "2C":false, "2D":true, "2E":true,
+                "3A":false, "3B":false, "3C":true, "3D":true, "3E":true,
+                "4A":true, "4B":false, "4C":false, "4D":true, "4E":false,
+                "5A":false, "5B":true, "5C":true, "5D":false, "5E":true
+                }
+        ]
+    },
+    {
+        "flight_id":"70c6591e-8616-4b7e-b26b-e61625ac9a5a",
+        "flight_number": 4589,
+        "plane":"Boeing 777X",
+        "airline": "Air France",
+        "destination": "JFK",
+        "departure": "CLT",
+        "depart_date":"4/11/2022",
+        "depart_time": "15:13",
+        "arrival_time": "17:38",
+        "seats":
+        [
+                {
+                "1A":true,  "1B":true,  "1C":false, "1D":false, "1E":true,
+                "2A":false, "2B":false, "2C":false, "2D":false, "2E":true,
+                "3A":true, "3B":false, "3C":false, "3D":true, "3E":true,
+                "4A":true, "4B":false, "4C":false, "4D":true, "4E":false,
+                "5A":false, "5B":true, "5C":true, "5D":false, "5E":true
+                }
+        ]
+    },
+    {
+        "flight_id":"f9ec457a-8282-4ce9-85e0-e8f354355021",
+        "flight_number": 1239,
+        "plane":"Boeing 757-200",
+        "airline": "United",
+        "destination": "LAX",
+        "departure": "JFK",
+        "depart_date":"4/1/2022",
+        "depart_time": "06:23",
+        "arrival_time": "12:54",
+        "seats":
+        [
+                {
+                "1A":true,  "1B":true,  "1C":false, "1D":false, "1E":true,
+                "2A":false, "2B":false, "2C":false, "2D":false, "2E":true,
+                "3A":false, "3B":false, "3C":false, "3D":true, "3E":true,
+                "4A":true, "4B":false, "4C":false, "4D":true, "4E":false,
+                "5A":false, "5B":true, "5C":true, "5D":false, "5E":true
+                }
+        ]
+    }
+]
