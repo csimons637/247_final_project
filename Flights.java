@@ -4,4 +4,12 @@ import java.util.ArrayList;
 
 public class Flights implements Flight{
     private ArrayList<Flight> flights;
+
+    public ArrayList<Flight> getAllFlights(){
+
+    }
+
+    public ArrayList<Flight> getFlights(String keyword) {
+        
+    }
 }
