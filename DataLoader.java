@@ -74,10 +74,18 @@ public class DataLoader extends DataConstants {
 
 
     // Loads Bookings from bookings.json
-    public static ArrayList<Booking> get Bookings() {
+    public static ArrayList<Booking> getBookings() {
         ArrayList<Booking> bookings = new ArrayList<Booking>();
 
         return bookings;
+    }
+
+
+    // Loads Friends from friends.json
+    public static ArrayList<User> getFriends() {
+        ArrayList<User> friends = new ArrayList<User>();
+
+        return friends;
     }
 
 
