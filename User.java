@@ -2,15 +2,16 @@ import java.util.ArrayList;
 
 abstract class User {
     private String email;
-    private Passport passport;
-    private ArrayList<Passport> guests;
-    public int luggage;
+    private String firstName;
+    private String lastName;
+    private String address;
+    private Date birthdate;
 
-    public User(String firstName, String lastName, String address, Passport passport, String birthdate) {
+    public User(String firstName, String lastName, String address, Date birthdate) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.address = address;
-        this.passport = passport;
+        this.email = email;
         this.birthdate = birthdate;
     }
 
