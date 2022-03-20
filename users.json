@@ -1,7 +1,12 @@
 [
     {
         "user_id": "5f4e888d-a13c-4ca9-bc34-e44a97b45238",
+        "first_name": "J. Jonah",
+        "last_name": "Jameson",
         "username": "jjameson23",
+        "email": "...",
+        "address": "...",
+        "birthdate": "...",
         "friends":
             [
                 {
@@ -13,55 +18,94 @@
             ]
     },
     {
-        "user_id": "...",
-        "username": "...",
+        "user_id": "8306c0a6-8450-4813-b8f3-08c9e17d84b1",
+        "first_name": "Peter",
+        "last_name": "Parker",
+        "username": "peterpark89",
+        "email": "...",
+        "address": "...",
+        "birthdate": "...",
         "friends":
             [
                 {
-                    "friend_id": "..."
+                    "friend_id": "5f4e888d-a13c-4ca9-bc34-e44a97b45238"
                 },
                 {
-                    "friend_id": "..."
+                    "friend_id": "8306c0a6-8450-4813-b8f3-08c9e17d84b1"
                 }
             ]
     },
     {
-        "user_id": "...",
-        "username": "...",
+        "user_id": "c1645ea6-d189-4a31-a379-6556e870559f",
+        "first_name": "Coretta",
+        "last_name": "Washington",
+        "username": "cwash_1233",
+        "email": "...",
+        "address": "...",
+        "birthdate": "...",
         "friends":
             [
                 {
-                    "friend_id": "..."
+                    "friend_id": "5f4e888d-a13c-4ca9-bc34-e44a97b45238"
                 },
                 {
-                    "friend_id": "..."
+                    "friend_id": "8306c0a6-8450-4813-b8f3-08c9e17d84b1"
                 }
             ]
     },
     {
-        "user_id": "...",
-        "username": "...",
+        "user_id": "6462610a-f2e6-4d9d-a9ca-81474a7a2c0b",
+        "first_name": "Julieta",
+        "last_name": "D'Amicio",
+        "username": "jdam1co",
+        "email": "...",
+        "address": "...",
+        "birthdate": "...",
         "friends":
             [
                 {
-                    "friend_id": "..."
+                    "friend_id": "5f4e888d-a13c-4ca9-bc34-e44a97b45238"
                 },
                 {
-                    "friend_id": "..."
+                    "friend_id": "8306c0a6-8450-4813-b8f3-08c9e17d84b1"
                 }
             ]
     },
     {
-        "user_id": "...",
-        "username": "...",
+        "user_id": "2084604e-e1d1-4584-8764-5b0e8fc0a61a",
+        "first_name": "Bernard",
+        "last_name": "Sanders",
+        "username": "bern_sand12",
+        "email": "...",
+        "address": "...",
+        "birthdate": "...",
         "friends":
             [
                 {
-                    "friend_id": "..."
+                    "friend_id": "5f4e888d-a13c-4ca9-bc34-e44a97b45238"
                 },
                 {
-                    "friend_id": "..."
+                    "friend_id": "8306c0a6-8450-4813-b8f3-08c9e17d84b1"
                 }
             ]
+    },
+    {
+        "user_id": "e86ff8aa-5af4-4427-9c42-84bee85bd060",
+        "first_name": "John",
+        "last_name": "Doe",
+        "username": "jdoe1234",
+        "email": "jdoe234@gmail.com",
+        "address": "...",
+        "birthdate": "...",
+        "friends":
+            [
+                {
+                    "friend_id": "5f4e888d-a13c-4ca9-bc34-e44a97b45238"
+                },
+                {
+                    "friend_id": "8306c0a6-8450-4813-b8f3-08c9e17d84b1"
+                }
+            ]
+
     }
 ]
