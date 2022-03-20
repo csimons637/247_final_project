@@ -22,8 +22,4 @@ abstract class User {
     protected void setLastName() {
 
     }
-
-    protected void makePassport() {
-        
-    }
 }
