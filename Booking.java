@@ -7,9 +7,11 @@ public class Booking {
     private ArrayList<UUID> friends = new ArrayList<UUID>();
     private UUID hotel;
     
-    public Booking(ArrayList<UUID> flights, UUID hotel,) {
+    public Booking(UUID booking, ArrayList<UUID> friends, UUID hotel, UUID owner) {
         this.hotel = hotel;
-        this.flights = flights;
+        this.friends = friends;
+        this.ownerID = owner;
+        this.bookingID = booking;
     }
 
     public static String toString() {
