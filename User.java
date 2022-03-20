@@ -7,7 +7,7 @@ abstract class User {
     private String address;
     private Date birthdate;
 
-    public User(String firstName, String lastName, String address, Date birthdate) {
+    public User(String firstName, String lastName, String address, Date birthdate, String email) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.address = address;
