@@ -7,11 +7,11 @@ public class DataConstants {
     protected static final String FLIGHTS_FILE = "flights.json";
     protected static final String FRIENDS_FILE = "friends.json";
     protected static final String HOTELS_FILE = "hotels.json";
-    // Users Constants
-    protected static final String USER_ID = "user_id";
-    protected static final String UNAME = "username";
-    protected static final String FRIENDS = "friends";
+    protected static final String BOOKING_FILE = "bookings.json";
+    // Friends Constants
     protected static final String FRIEND_ID = "friend_id";
+    protected static final String FLIGHTS = "flights";
+    protected static final String SEAT = "seat";
     // Flights Constats
     protected static final String FLIGHT_ID = "flight_id";
     protected static final String FLIGHT_NUM = "flight_number";
@@ -28,11 +28,20 @@ public class DataConstants {
     protected static final String HOTEL_NAME = "name";
     protected static final String ROOMS = "rooms";
     protected static final String ROOM_NUM = "number";
-    protected static final String RM_TYPE = "type";
+    protected static final String ROOM_TYPE = "type";
     protected static final String ROOM_AVAIL = "availability";
-    // Friends Constants
+    // Users Constants
+    protected static final String USER_ID = "user_id";
     protected static final String FIRST = "first_name";
-    protected static final String Last = "last_name";
-    protected static final String FLIGHTS = "flights";
-    protected static final String SEAT = "seat";
+    protected static final String LAST = "last_name";
+    protected static final String ADDRESS = "address";
+    protected static final String UNAME = "username";
+    protected static final String EMAIL = "email";
+    protected static final String BIRTH = "birthdate";
+    protected static final String FRIENDS = "friends";
+    // Bookings Constants
+    protected static final String BOOK = "booking_id";
+    protected static final String OWN = "owner_id";
+    protected static final String HOTEL = "hotel_id";
+    protected static final String ADDL_PPL = "assoc_people";
 }

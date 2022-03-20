@@ -17,15 +17,15 @@ public class DataLoader extends DataConstants {
     public static ArrayList<Flight> getFlights() {
         ArrayList<Flight> flights = new ArrayList<Flight>();
 
-        /*
         try {
             FileReader reader = new FileReader(FLIGHTS_FILE);
             JSONParser parser = new JSONParser();
-            JSONArray flightsJSON = (JSONArray)new JSONParser().parse(reader);
+            JSONArray flightsJSON = (JSONArray)parser.parse(reader);
             JSONArray flightSeats = (JSONArray)new JSONObject().get(SEATS);
     
             for (int i = 0; i < flightsJSON.size(); i++) {
                 JSONObject flightJSON = (JSONObject)flightsJSON.get(i);
+
                 UUID flightID = UUID.fromString((String)flightJSON.get(FLIGHT_ID));
                 int flightNumber = (int)flightJSON.get(FLIGHT_NUM);
                 String planeType = (String)flightJSON.get(PLANE);
@@ -52,7 +52,7 @@ public class DataLoader extends DataConstants {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        */
+
         return null;
     }
 
@@ -61,7 +61,42 @@ public class DataLoader extends DataConstants {
     public static ArrayList<Hotels> getHotels() {
         ArrayList<Hotels> hotels = new ArrayList<Hotels>();
 
-        return hotels;
+        try {
+            FileReader reader = new FileReader(HOTELS_FILE);
+            JSONParser parser = new JSONParser();
+            JSONArray hotelsJSON = (JSONArray)parser.parse(reader);
+            JSONArray hotelRooms = (JSONArray)new JSONObject().get(ROOMS);
+            JSONArray roomAvail = (JSONArray)new JSONObject().get(ROOM_AVAIL);
+    
+            for (int i = 0; i < hotelsJSON.size(); i++) {
+                JSONObject hotelJSON = (JSONObject)hotelsJSON.get(i);
+                // Hotel Object grabbed from JSON, retrieve details
+                UUID hotelID = UUID.fromString((String)hotelJSON.get(HOTEL_ID));
+                String hotelName = (String)hotelJSON.get(HOTEL_NAME);
+                ArrayList<Room> rooms = new ArrayList<Room>();
+    
+                for (int j = 0; j < hotelRooms.size(); j++) {
+                    JSONObject hotelRoom = (JSONObject)hotelRooms.get(i);
+                    String name = (String)hotelRoom.get(ROOM_NUM);
+                    String roomType = (String)hotelRoom.get(ROOM_TYPE);
+    
+                    ArrayList<Date> avail = new ArrayList<Date>();
+                    avail = (ArrayList<Date>)roomAvail; // Should cast the JSONArray to ArrayList<String>
+    
+                    Room room = new Room(name, roomType, avail);
+                    rooms.add(room);
+                }
+    
+                hotels.add(new Hotel(hotelName, hotelID));
+            }
+            return hotels;
+            reader.close();
+    
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    
+        return null;
     }
 
 
@@ -69,7 +104,40 @@ public class DataLoader extends DataConstants {
     public static ArrayList<User> getUsers() {
         ArrayList<User> users = new ArrayList<User>();
 
-        return users;
+        try {
+            FileReader reader = new FileReader(USER_FILE);
+            JSONParser parser = new JSONParser();
+            JSONArray usersJSON = (JSONArray)parser.parse(reader);
+            JSONArray friends = (JSONArray)new JSONObject().get(FRIENDS);
+
+            for (int i = 0; i < usersJSON.size(); i++) {
+                JSONObject userJSON = (JSONObject)usersJSON.get(i);
+                ArrayList<UUID> friendIDs = new ArrayList<UUID>();
+
+                UUID userID = UUID.fromString((String)userJSON.get(USER_ID));
+                String first = (String)userJSON.get(FIRST);
+                String last = (String)userJSON.get(LAST);
+                String address = (String)userJSON.get(ADDRESS);
+                LocalDate birthdate = (LocalDate)userJSON.get(BIRTH);
+                String username = (String)userJSON.get(UNAME);
+                String email = (String)userJSON.get(EMAIL);
+
+                for (int j = 0; j < friends.size(); j++) {
+                    JSONObject friend = (JSONObject)friends.get(i);
+                    UUID friendID = UUID.fromString((String)friend.get(FRIEND_ID));
+                    friendIDs.add(friendID);
+                }
+
+                users.add(new User(first, last, address, birthdate, email, friendIDs));
+            }
+            return users;
+            reader.close();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return null;
     }
 
 
@@ -77,7 +145,36 @@ public class DataLoader extends DataConstants {
     public static ArrayList<Booking> getBookings() {
         ArrayList<Booking> bookings = new ArrayList<Booking>();
 
-        return bookings;
+        try {
+            FileReader reader = new FileReader(BOOKING_FILE);
+            JSONParser parser = new JSONParser();
+            JSONArray bookingsJSON = (JSONArray)parser.parse(reader);
+            JSONArray friends = (JSONArray)new JSONObject().get(ADDL_PPL);
+
+            for (int i = 0; i < bookingsJSON.size(); i++) {
+                JSONObject bookingJSON = (JSONObject)bookingsJSON.get(i);
+                ArrayList<UUID> friendArray = new ArrayList<UUID>();
+
+                UUID bookID = UUID.fromString((String)bookingJSON.get(BOOK));
+                UUID ownerID = UUID.fromString((String)bookingJSON.get(OWN));
+                UUID hotelID = UUID.fromString((String)bookingJSON.get(HOTEL));
+
+                for (int j = 0; j < friends.size(); j++) {
+                    JSONObject friend = (JSONObject)friends.get(i);
+                    UUID friendID = UUID.fromString((String)friend.get(FRIEND_ID));
+                    friendArray.add(friendID);
+                }
+
+                bookings.add(new Booking(bookID, friendArray, hotelID, ownerID));
+            }
+            return bookings;
+            reader.close();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return null;
     }
 
 
@@ -85,12 +182,41 @@ public class DataLoader extends DataConstants {
     public static ArrayList<User> getFriends() {
         ArrayList<User> friends = new ArrayList<User>();
 
-        return friends;
+        try {
+            FileReader reader = new FileReader(FRIENDS_FILE);
+            JSONParser parser = new JSONParser();
+            JSONArray friendsJSON = (JSONArray)parser.parse(reader);
+            JSONArray flightsJSON = (JSONArray)new JSONObject().get(FLIGHTS);
+            JSONArray seatsJSON = (JSONArray)new JSONObject().get(SEATS);
+
+            for (int i = 0; i < friendsJSON.size(); i++) {
+                JSONObject friendJSON = (JSONObject)friendsJSON.get(i);
+                ArrayList<UUID> flights = new ArrayList<UUID>();
+                ArrayList<String> seats = new ArrayList<String>();
+
+                for (int j = 0; j < flightsJSON.size(); j++) {
+                    JSONObject flight = (JSONObject)flightsJSON.get(i);
+                    UUID flightID = UUID.fromString((String)flight.get(FLIGHT_ID));
+                    flights.add(flightID);
+                }
+
+                for (int k = 0; k < seatsJSON.size(); k++) {
+                    JSONObject seat = (JSONObject)seatsJSON.get(i);
+                    String seatNum = (String)seat.get(SEAT);
+                    seats.add(seatNum);
+                }
+
+                // Needs a friend constructor in users.java
+            }
+            return friends;
+            reader.close();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return null;
     }
-
-
-
-
 
 
     public static void main(String args[]) {
