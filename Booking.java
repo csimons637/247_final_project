@@ -2,15 +2,12 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Booking {
-    private HashMap<String, String> preferences = new HashMap<String, String>();
-    private ArrayList<Flight> flights = new ArrayList<Flight>();
-    private ArrayList<String> seats = new ArrayList<String>();
-    private Hotel hotel;
-    private ArrayList<Room> rooms = new ArrayList<Room>();
-                                   // First room is primary user's room;
-                                   // others are friends' rooms
-
-    public Booking(ArrayList<Flight> flights, Hotel hotel) {
+    private UUID bookingID;
+    private UUID ownerID;
+    private ArrayList<UUID> friends = new ArrayList<UUID>();
+    private UUID hotel;
+    
+    public Booking(ArrayList<UUID> flights, UUID hotel,) {
         this.hotel = hotel;
         this.flights = flights;
     }
@@ -25,9 +22,5 @@ public class Booking {
         String cancelled;
         // Remove booking from JSON
         return cancelled;
-    }
-
-    public HashMap<String, String> getPref() {
-        return preferences;
     }
 }
