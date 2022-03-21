@@ -1,6 +1,5 @@
 import java.io.FileReader;
-import java.sql.Date;
-import java.sql.Time;
+
 import java.util.ArrayList;
 import java.util.UUID;
 import java.time.*;
@@ -77,13 +76,13 @@ public class DataLoader extends DataConstants {
     
                 for (int j = 0; j < hotelRooms.size(); j++) {
                     JSONObject hotelRoom = (JSONObject)hotelRooms.get(i);
-                    String name = (String)hotelRoom.get(ROOM_NUM);
+                    String num = (String)hotelRoom.get(ROOM_NUM);
                     String roomType = (String)hotelRoom.get(ROOM_TYPE);
     
-                    ArrayList<Date> avail = new ArrayList<Date>();
-                    avail = (ArrayList<Date>)roomAvail; // Should cast the JSONArray to ArrayList<String>
+                    ArrayList<LocalDate> avail = new ArrayList<LocalDate>();
+                    avail = (ArrayList<LocalDate>)roomAvail; // Should cast the JSONArray to ArrayList<String>
     
-                    Room room = new Room(name, roomType, avail);
+                    Room room = new Room(num, roomType, avail);
                     rooms.add(room);
                 }
     

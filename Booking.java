@@ -14,7 +14,7 @@ public class Booking {
         this.bookingID = booking;
     }
 
-    public static String toString() {
+    public String toString() {
         String booking;
 
         return booking;
@@ -24,5 +24,11 @@ public class Booking {
         String cancelled;
         // Remove booking from JSON
         return cancelled;
+    }
+
+    public static String editBooking() {
+        String edit;
+        // Edit booking
+        return edit;
     }
 }

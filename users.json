@@ -10,7 +10,21 @@
         "friends":
             [
                 {
-                    "friend_id": "5f4e888d-a13c-4ca9-bc34-e44a97b45238"
+                    "friend_id": "5f4e888d-a13c-4ca9-bc34-e44a97b45238",
+                    "flights":
+                    [
+                        {
+                            "flight_id": "70c6591e-8616-4b7e-b26b-e61625ac9a5a",
+                            "seat":"1A"
+                        }
+                    ],
+                    "hotels":
+                    [
+                        {"hotelid":"sdfsfw",
+                        "hotelroom":"sfe",
+                        "checkindate":"sdfsd",
+                        "checkoutdate":"dsfew"}
+                    ]
                 },
                 {
                     "friend_id": "8306c0a6-8450-4813-b8f3-08c9e17d84b1"

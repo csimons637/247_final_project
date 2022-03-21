@@ -12,4 +12,8 @@ public class Flights implements Flight{
     public ArrayList<Flight> getFlights(String keyword) {
         
     }
+
+    public Flight getFlightByUUID(UUID id){
+        return null;
+    }
 }

@@ -1,15 +1,16 @@
 import java.util.ArrayList;
+import 
 
 public class Room {
     public int roomNum;
     public String roomType;
-    public ArrayList<Date> availabilities;
-    public ArrayList<Date> daysBooked;
+    public ArrayList<LocalDate> availabilities;
+    public ArrayList<LocalDate> daysBooked;
 
-    public Room(int roomNum, String roomType, ArrayList<Date> avail){
+    public Room(int roomNum, String roomType, ArrayList<LocalDate> avail){
         this.roomNum = roomNum;
         this.roomType = roomType;
-        availabilities = new ArrayList<Date>();
-        daysBooked = new ArrayList<Date>();
+        availabilities = new ArrayList<LocalDate>();
+        daysBooked = new ArrayList<LocalDate>();
     }
 }
