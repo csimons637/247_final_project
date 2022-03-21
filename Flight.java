@@ -1,4 +1,7 @@
 import java.util.ArrayList;
+import java.time.*;
+import java.util.UUID;
+
 /**
  * @author Christopher Ngo
  * this is a flight and all of its atributes 
@@ -7,22 +10,22 @@ public class Flight {
     
     private ArrayList<String> seats;
     private String destination;
-    private Time departTime;
-    private Time arrivalTime;
+    private LocalTime departTime;
+    private LocalTime arrivalTime;
     private String departureLoc;
 
     private UUID uuid;
     private String airline;
-    private Date departureDate
+    private LocalDate departureDate;
 /**
  * Flight constructior 
  * Also creates a new arraaylist for seats JSON
  */
 
 
-    public Flight (String destination, Time departTime,
-    Time arrivalTime, String departureLoc, UUID uuid, String plane,
-    String airline, Date departureDate) {
+    public Flight (String destination, LocalTime departTime,
+    LocalTime arrivalTime, String departureLoc, UUID uuid, String plane,
+    String airline, LocalDate departureDate) {
 
         this.destination = destination;
         this.departTime = departTime;
@@ -32,7 +35,7 @@ public class Flight {
         this.airline = airline;
         this.departureDate = departureDate;
 
-        seat = new ArrayList<String>();
+        seats = new ArrayList<String>();
     }
 
 

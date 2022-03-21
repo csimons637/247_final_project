@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.UUID;
 
 public class Booking {
     private UUID bookingID;
@@ -15,20 +16,14 @@ public class Booking {
     }
 
     public String toString() {
-        String booking;
-
-        return booking;
+        return null;
     }
 
     public static String getCancellation() {
-        String cancelled;
-        // Remove booking from JSON
-        return cancelled;
+        return null;
     }
 
     public static String editBooking() {
-        String edit;
-        // Edit booking
-        return edit;
+        return null;
     }
 }
