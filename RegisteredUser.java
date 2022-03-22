@@ -1,23 +1,21 @@
-package 247_final_project;
-
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class RegisteredUser implements User{
+public class RegisteredUser extends User {
     public String userName;
     public String password;
     public HashMap<String, String> preferences;
     private String email;
     public Passport passport;
     private ArrayList<Passport> guests;
-    private String birthdate;
+    private LocalDate birthdate;
     public int luggage;
-    private Trip trip;
+    private Booking booking;
 
-    public RegisteredUser(String firstName, String lastName, String address, Passport passport, String birthdate) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.address = address;
+    public RegisteredUser(String firstName, String lastName, String address, Passport passport, LocalDate birthdate, 
+                          String email, ArrayList<Passport> friends ) {
+        super(firstName, lastName, address, birthdate, email, friends);
         this.passport = passport;
         this.birthdate = birthdate;
     }

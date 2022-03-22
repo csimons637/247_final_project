@@ -1,5 +1,3 @@
-package 247_final_project;
-
 import java.util.ArrayList;
 import java.util.UUID;
 
