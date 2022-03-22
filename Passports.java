@@ -3,13 +3,13 @@ import java.util.UUID;
 
 public class Passports {
     private Passport passport;
-    private ArrayList<Passports> passports = new ArrayList<Passports>();
+    private ArrayList<Passport> passports = new ArrayList<Passport>();
 
-    public ArrayList<Passports> getAllPassports(){
+    public ArrayList<Passport> getAllPassports(){
         return null;
     }
     
-    public ArrayList<Passports> getPassportsByUUID(UUID passport_id) {
+    public Passport getPassportsByUUID(UUID passport_id) {
         return null;
     }
 }
