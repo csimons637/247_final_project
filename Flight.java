@@ -38,9 +38,5 @@ public class Flight {
         this.flightNumber = flightNumber;
 
         this.seats = seats;
-    }
-
-
-
-  
+    } 
 }
