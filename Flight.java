@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Date;
 import java.time.*;
 import java.util.UUID;
 
@@ -13,18 +14,19 @@ public class Flight {
     private LocalTime departTime;
     private LocalTime arrivalTime;
     private String departureLoc;
+    private String flightNumber;
 
     private UUID uuid;
     private String airline;
-    private LocalDate departureDate;
+    private Date departureDate;
 /**
  * Flight constructior 
  * Also creates a new arraylist for seats JSON
  */
 
 
-    public Flight (UUID flightID, int flightNumber, String planeType, String airline, String dest_airport,
-        String dep_airport, LocalDate departDate, LocalTime depart, LocalTime arrive, ArrayList<String> seats) {
+    public Flight (UUID flightID, String flightNumber, String planeType, String airline, String dest_airport,
+        String dep_airport, Date departDate, LocalTime depart, LocalTime arrive, ArrayList<String> seats) {
 
         this.destination = dest_airport;
         this.departTime = depart;
@@ -33,9 +35,10 @@ public class Flight {
         this.uuid = flightID;
         this.airline = airline;
         this.departureDate = departDate;
+        this.flightNumber = flightNumber;
 
         this.seats = seats;
-}
+    }
 
 
 

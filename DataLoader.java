@@ -1,8 +1,10 @@
 import java.io.FileReader;
-
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.UUID;
-import java.time.*;
+import java.util.Date;
+import java.time.LocalTime;
 
 // JSON parsing, objects and arrays
 import org.json.simple.JSONArray;
@@ -12,8 +14,18 @@ import org.json.simple.parser.JSONParser;
 
 public class DataLoader extends DataConstants {
 
+    // Parses dates from Strings
+    public static Date parseDate(String date) {
+        try {
+            return new SimpleDateFormat("MM/dd/yyyy").parse(date);
+        } catch (ParseException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
     // Loads Flights from flights.json
-    public static ArrayList<Flight> getFlights() {
+    public static ArrayList<Flight> getAllFlights() {
         ArrayList<Flight> flights = new ArrayList<Flight>();
 
         try {
@@ -26,12 +38,12 @@ public class DataLoader extends DataConstants {
                 JSONObject flightJSON = (JSONObject)flightsJSON.get(i);
 
                 UUID flightID = UUID.fromString((String)flightJSON.get(FLIGHT_ID));
-                int flightNumber = (int)flightJSON.get(FLIGHT_NUM);
+                String flightNumber = (String)flightJSON.get(FLIGHT_NUM);
                 String planeType = (String)flightJSON.get(PLANE);
                 String airline = (String)flightJSON.get(AIRLINE);
                 String dest_airport = (String)flightJSON.get(DEST);
                 String dep_airport = (String)flightJSON.get(DEPART);
-                LocalDate departDate = (LocalDate)flightJSON.get(DEP_DATE);
+                Date departDate = parseDate((String)flightJSON.get(DEP_DATE));
                 LocalTime depart = (LocalTime)flightJSON.get(DEPART_TIME);
                 LocalTime arrive = (LocalTime)flightJSON.get(ARRIVAL_TIME);
                 ArrayList<String> seats = new ArrayList<String>();
@@ -46,18 +58,18 @@ public class DataLoader extends DataConstants {
                                 depart, arrive, seats));
             }
             reader.close();
-            return flights;
+            // return flights;
 
         } catch (Exception e) {
             e.printStackTrace();
         }
 
-        return null;
+        return flights;
     }
 
 
     // Loads Hotels (and their rooms) from hotels.json
-    public static ArrayList<Hotel> getHotels() {
+    public static ArrayList<Hotel> getAllHotels() {
         ArrayList<Hotel> hotels = new ArrayList<Hotel>();
 
         try {
@@ -79,8 +91,12 @@ public class DataLoader extends DataConstants {
                     String num = (String)hotelRoom.get(ROOM_NUM);
                     String roomType = (String)hotelRoom.get(ROOM_TYPE);
     
-                    ArrayList<LocalDate> avail = new ArrayList<LocalDate>();
-                    avail = (ArrayList<LocalDate>)roomAvail; // Should cast the JSONArray to ArrayList<String>
+                    ArrayList<Date> avail = new ArrayList<Date>();
+
+                    for (int k = 0; k < roomAvail.size(); k++) {
+                        Date date = parseDate((String)roomAvail.get(k));
+                        avail.add(date);
+                    }
     
                     Room room = new Room(num, roomType, avail);
                     rooms.add(room);
@@ -100,7 +116,7 @@ public class DataLoader extends DataConstants {
 
 
     // Loads Users from users.json
-    public static ArrayList<User> getUsers() {
+    public static ArrayList<User> getAllUsers() {
         ArrayList<User> users = new ArrayList<User>();
 
         try {
@@ -141,7 +157,7 @@ public class DataLoader extends DataConstants {
 
 
     // Loads Bookings from bookings.json
-    public static ArrayList<Booking> getBookings() {
+    public static ArrayList<Booking> getAllBookings() {
         ArrayList<Booking> bookings = new ArrayList<Booking>();
 
         try {
@@ -178,7 +194,7 @@ public class DataLoader extends DataConstants {
 
 
     // Loads Friends from friends.json
-    public static ArrayList<Passport> getFriends() {
+    public static ArrayList<Passport> getAllFriends() {
         ArrayList<Passport> friends = new ArrayList<Passport>();
 
         try {
@@ -224,7 +240,8 @@ public class DataLoader extends DataConstants {
 
 
     public static void main(String args[]) {
-
+        ArrayList<Flight> testArray = getAllFlights();
+        System.out.println(testArray);
     }
 
     // Repeat above for flights, hotels, etc.
