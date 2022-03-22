@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-import java.util.UUID;
 import java.time.*;
 
 abstract class User {

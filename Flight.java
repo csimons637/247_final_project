@@ -19,24 +19,23 @@ public class Flight {
     private LocalDate departureDate;
 /**
  * Flight constructior 
- * Also creates a new arraaylist for seats JSON
+ * Also creates a new arraylist for seats JSON
  */
 
 
-    public Flight (String destination, LocalTime departTime,
-    LocalTime arrivalTime, String departureLoc, UUID uuid, String plane,
-    String airline, LocalDate departureDate) {
+    public Flight (UUID flightID, int flightNumber, String planeType, String airline, String dest_airport,
+        String dep_airport, LocalDate departDate, LocalTime depart, LocalTime arrive, ArrayList<String> seats) {
 
-        this.destination = destination;
-        this.departTime = departTime;
-        this.arrivalTime = arrivalTime;
-        this.departureLoc = departureLoc;
-        this.uuid = uuid;
+        this.destination = dest_airport;
+        this.departTime = depart;
+        this.arrivalTime = arrive;
+        this.departureLoc = dep_airport;
+        this.uuid = flightID;
         this.airline = airline;
-        this.departureDate = departureDate;
+        this.departureDate = departDate;
 
-        seats = new ArrayList<String>();
-    }
+        this.seats = seats;
+}
 
 
 

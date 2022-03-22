@@ -1,6 +1,10 @@
 [
     {
-        "friend_id": "5f4e888d-a13c-4ca9-bc34-e44a97b45238",
+        "passport_id": "5f4e888d-a13c-4ca9-bc34-e44a97b45238",
+        "first_name": "...",
+        "last_name": "...",
+        "address": "...",
+        "birthdate": "...",
         "flights":
             [
                 {
@@ -15,8 +19,11 @@
             ]
     },
     {
-        "user_id": "...",
-        "username": "...",
+        "passport_id": "...",
+        "first_name": "...",
+        "last_name": "...",
+        "address": "...",
+        "birthdate": "...",
         "flights":
             [
                 {
@@ -31,8 +38,11 @@
             ]
     },
     {
-        "user_id": "...",
-        "username": "...",
+        "passport_id": "...",
+        "first_name": "...",
+        "last_name": "...",
+        "address": "...",
+        "birthdate": "...",
         "flights":
             [
                 {
@@ -47,8 +57,11 @@
             ]
     },
     {
-        "user_id": "...",
-        "username": "...",
+        "passport_id": "...",
+        "first_name": "...",
+        "last_name": "...",
+        "address": "...",
+        "birthdate": "...",
         "flights":
             [
                 {
@@ -63,8 +76,11 @@
             ]
     },
     {
-        "user_id": "...",
-        "username": "...",
+        "passport_id": "...",
+        "first_name": "...",
+        "last_name": "...",
+        "address": "...",
+        "birthdate": "...",
         "flights":
             [
                 {

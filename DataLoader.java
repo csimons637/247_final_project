@@ -45,8 +45,8 @@ public class DataLoader extends DataConstants {
                                 airline, dest_airport, dep_airport, departDate,
                                 depart, arrive, seats));
             }
-            return flights;
             reader.close();
+            return flights;
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -57,8 +57,8 @@ public class DataLoader extends DataConstants {
 
 
     // Loads Hotels (and their rooms) from hotels.json
-    public static ArrayList<Hotels> getHotels() {
-        ArrayList<Hotels> hotels = new ArrayList<Hotels>();
+    public static ArrayList<Hotel> getHotels() {
+        ArrayList<Hotel> hotels = new ArrayList<Hotel>();
 
         try {
             FileReader reader = new FileReader(HOTELS_FILE);
@@ -88,8 +88,8 @@ public class DataLoader extends DataConstants {
     
                 hotels.add(new Hotel(hotelName, hotelID));
             }
-            return hotels;
             reader.close();
+            return hotels;
     
         } catch (Exception e) {
             e.printStackTrace();
@@ -111,7 +111,7 @@ public class DataLoader extends DataConstants {
 
             for (int i = 0; i < usersJSON.size(); i++) {
                 JSONObject userJSON = (JSONObject)usersJSON.get(i);
-                ArrayList<UUID> friendIDs = new ArrayList<UUID>();
+                ArrayList<Passport> friendIDs = new ArrayList<Passport>();
 
                 UUID userID = UUID.fromString((String)userJSON.get(USER_ID));
                 String first = (String)userJSON.get(FIRST);
@@ -124,13 +124,13 @@ public class DataLoader extends DataConstants {
                 for (int j = 0; j < friends.size(); j++) {
                     JSONObject friend = (JSONObject)friends.get(i);
                     UUID friendID = UUID.fromString((String)friend.get(FRIEND_ID));
-                    friendIDs.add(friendID);
+                    friendIDs.add(getPassportByUUID(friendID));
                 }
 
                 users.add(new User(first, last, address, birthdate, email, friendIDs));
             }
-            return users;
             reader.close();
+            return users;
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -166,8 +166,8 @@ public class DataLoader extends DataConstants {
 
                 bookings.add(new Booking(bookID, friendArray, hotelID, ownerID));
             }
-            return bookings;
             reader.close();
+            return bookings;
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -178,8 +178,8 @@ public class DataLoader extends DataConstants {
 
 
     // Loads Friends from friends.json
-    public static ArrayList<User> getFriends() {
-        ArrayList<User> friends = new ArrayList<User>();
+    public static ArrayList<Passport> getFriends() {
+        ArrayList<Passport> friends = new ArrayList<Passport>();
 
         try {
             FileReader reader = new FileReader(FRIENDS_FILE);
@@ -192,6 +192,11 @@ public class DataLoader extends DataConstants {
                 JSONObject friendJSON = (JSONObject)friendsJSON.get(i);
                 ArrayList<UUID> flights = new ArrayList<UUID>();
                 ArrayList<String> seats = new ArrayList<String>();
+                UUID pass = UUID.fromString((String)friendJSON.get(PASS));
+                String fName = (String)friendJSON.get(FIRST);
+                String lName = (String)friendJSON.get(LAST);
+                String address = (String)friendJSON.get(ADDRESS);
+                LocalDate birth = (LocalDate)friendJSON.get(BIRTH);
 
                 for (int j = 0; j < flightsJSON.size(); j++) {
                     JSONObject flight = (JSONObject)flightsJSON.get(i);
@@ -205,10 +210,10 @@ public class DataLoader extends DataConstants {
                     seats.add(seatNum);
                 }
 
-                // Needs a friend constructor in users.java
+                friends.add(new Passport(fName, lName, address, birth, pass, flights, seats));
             }
-            return friends;
             reader.close();
+            return friends;
 
         } catch (Exception e) {
             e.printStackTrace();

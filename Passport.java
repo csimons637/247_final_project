@@ -1,4 +1,6 @@
+import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.UUID;
 
 /**
  * @author Christopher Ngo
@@ -7,9 +9,11 @@ public class Passport {
     public String firstName;
     public String lastName;
     public String address;
-    public String birthDate;
+    public LocalDate birthDate;
+    public ArrayList<UUID> flights;
+    public ArrayList<String> seats;
 
-    private String passportNum;
+    private UUID passportNum;
     public ArrayList<String> passportInfo;
 
     /**
@@ -22,12 +26,14 @@ public class Passport {
      * 
      */
 
-public Passport (String firstName, String lastName, String address, String birthDate, String passportNum ){
+public Passport (String firstName, String lastName, String address, LocalDate birthDate, UUID passportNum, ArrayList<UUID> flights, ArrayList<String> seats){
     this.firstName = firstName;
     this.lastName = lastName;
     this.address = address;
     this.birthDate = birthDate;
     this.passportNum = passportNum;
+    this.flights = flights;
+    this.seats = seats;
 
     passportInfo = new ArrayList<>();
 }
