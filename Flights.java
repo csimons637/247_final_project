@@ -9,10 +9,6 @@ public class Flights {
         return null;
     }
 
-    public ArrayList<Flight> getFlights(String keyword) {
-        return null;   
-    }
-
     public Flight getFlightByUUID(UUID flightid){
         return null;
     }
