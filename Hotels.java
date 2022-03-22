@@ -10,10 +10,6 @@ public class Hotels {
         return null;
     }
 
-    public ArrayList<Hotels> getHotels(String keywords){
-        return null;
-    }
-
     public Hotel getHotelByUUID(UUID hotel_id){
         return null;
     }
