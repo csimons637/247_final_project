@@ -89,7 +89,7 @@ public class DataLoader extends DataConstants {
             JSONArray hotelsJSON = (JSONArray)parser.parse(reader);
             
     
-            for (int i = 0; i < hotelsJSON.size(); i++) {
+            for (int i = 0; i < hotelsJSON.size(); i++) { // Breakpoint
                 JSONObject hotelJSON = (JSONObject)hotelsJSON.get(i);
                 JSONArray hotelRooms = (JSONArray)hotelJSON.get(ROOMS);
                 JSONArray roomAvail = (JSONArray)hotelJSON.get(ROOM_AVAIL);
@@ -100,14 +100,14 @@ public class DataLoader extends DataConstants {
                 String hotelName = (String)hotelJSON.get(HOTEL_NAME);
                 ArrayList<Room> rooms = new ArrayList<Room>();
     
-                for (int j = 0; j < hotelRooms.size(); j++) {
+                for (int j = 0; j < hotelRooms.size(); j++) { // Breakpoint
                     JSONObject hotelRoom = (JSONObject)hotelRooms.get(i);
                     String num = (String)hotelRoom.get(ROOM_NUM);
                     String roomType = (String)hotelRoom.get(ROOM_TYPE);
     
                     ArrayList<Date> avail = new ArrayList<Date>();
 
-                    for (int k = 0; k < roomAvail.size(); k++) {
+                    for (int k = 0; k < roomAvail.size(); k++) { // Breakpoint
                         Date date = parseDate((String)roomAvail.get(k));
                         avail.add(date);
                     }
