@@ -87,13 +87,14 @@ public class DataLoader extends DataConstants {
             FileReader reader = new FileReader(HOTELS_FILE);
             JSONParser parser = new JSONParser();
             JSONArray hotelsJSON = (JSONArray)parser.parse(reader);
-            JSONArray hotelRooms = (JSONArray)new JSONObject().get(ROOMS);
-            JSONArray roomAvail = (JSONArray)new JSONObject().get(ROOM_AVAIL);
-            hotelRooms = new JSONArray();
-            roomAvail = new JSONArray();
+            
     
             for (int i = 0; i < hotelsJSON.size(); i++) {
                 JSONObject hotelJSON = (JSONObject)hotelsJSON.get(i);
+                JSONArray hotelRooms = (JSONArray)hotelJSON.get(ROOMS);
+                JSONArray roomAvail = (JSONArray)hotelJSON.get(ROOM_AVAIL);
+                hotelRooms = new JSONArray();
+                roomAvail = new JSONArray();
                 // Hotel Object grabbed from JSON, retrieve details
                 UUID hotelID = UUID.fromString((String)hotelJSON.get(HOTEL_ID));
                 String hotelName = (String)hotelJSON.get(HOTEL_NAME);
@@ -111,11 +112,10 @@ public class DataLoader extends DataConstants {
                         avail.add(date);
                     }
     
-                    Room room = new Room(num, roomType, avail);
-                    rooms.add(room);
+                    rooms.add(new Room(num, roomType, avail));
                 }
     
-                hotels.add(new Hotel(hotelName, hotelID));
+                hotels.add(new Hotel(hotelName, hotelID, rooms));
                 System.out.println(hotelID.toString());
             }
             reader.close();
@@ -153,7 +153,7 @@ public class DataLoader extends DataConstants {
 
                 for (int j = 0; j < friends.size(); j++) {
                     JSONObject friend = (JSONObject)friends.get(i);
-                    Passport friendPass = getPassportByUUID(UUID.fromString((String)friend.get(FRIEND_ID)));
+                    Passport friendPass = Passports.getInstance().getPassportByUUID(UUID.fromString((String)friend.get(FRIEND_ID)));
 
                     friendIDs.add(friendPass);
                 }
@@ -255,13 +255,11 @@ public class DataLoader extends DataConstants {
 
 
     public static void main(String args[]) {
-        System.out.println("Flights: ");
-        getAllFlights();
-        System.out.println("Hotels: ");
-        getAllHotels();
-        System.out.println("Friends: ");
-        getAllFriends();
-    }
+        ArrayList<Hotel> hotels = getAllHotels();
 
-    // Repeat above for flights, hotels, etc.
+        System.out.println("Hotels: ");
+        for (Hotel h : hotels) {
+            System.out.println(h);
+        }
+    }
 }
