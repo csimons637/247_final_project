@@ -39,4 +39,8 @@ public class Flight {
 
         this.seats = seats;
     } 
+
+    public UUID getUUID() {
+        return this.uuid;
+    }
 }
