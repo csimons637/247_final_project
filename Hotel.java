@@ -15,4 +15,8 @@ public class Hotel {
     public UUID getUUID() {
         return this.uuid;
     }
+
+    public String getName() {
+        return this.name;
+    }
 }
