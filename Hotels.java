@@ -26,7 +26,10 @@ public class Hotels {
 
     public Hotel getHotelByUUID(UUID hotel_id){
         for(Hotel hotel: hotels) {
-            
+            if(hotel.getUUID().equals(hotel_id)) {
+                return hotel;
+            }
         }
+        return null;
     }
 }

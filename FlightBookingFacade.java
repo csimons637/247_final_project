@@ -7,6 +7,14 @@ public class FlightBookingFacade {
         this.hotels = hotels;
     }
 
+    private void searchHotel(){
+
+    }
+
+    private void searchAirport(){
+
+    }
+    
     private void bookFlight(){
 
     }
