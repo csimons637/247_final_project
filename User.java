@@ -28,4 +28,8 @@ abstract class User {
     public void setLastName() {
 
     }
+
+    public UUID getUUID() {
+        return this.userID;
+    }
 }
