@@ -6,7 +6,7 @@ public class Hotels {
     private ArrayList<Hotel> hotels;
 
     private Hotels() {
-        hotels = DataLoader.getHotels();
+        hotels = DataLoader.getAllHotels();
     }
 
     public static Hotels getInstance() {
@@ -21,7 +21,7 @@ public class Hotels {
     }
 
     public ArrayList<Hotel> getAllHotels(){
-        return DataLoader.getHotels();
+        return DataLoader.getAllHotels();
     }
 
     public Hotel getHotelByUUID(UUID hotel_id){
