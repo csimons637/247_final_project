@@ -2,6 +2,8 @@
     {
         "hotel_id": "d5f5396a-8b74-4c62-8d1f-1a52a5f1908f",
         "name": "Motel 6",
+        "pool": true,
+        "gym": false,
         "rooms":
             [
                 {
@@ -74,6 +76,8 @@
     {
         "hotel_id": "58cb2fcc-7608-415b-bba0-94978a75f6ab",
         "name": "4 Seasons Manhattan",
+        "pool": true,
+        "gym": true,
         "rooms":
             [
                 {
@@ -147,6 +151,8 @@
     {
         "hotel_id": "483ff49a-084d-49d9-8f1e-0cabc2b8d293",
         "name": "Hyatt Regency",
+        "pool": true,
+        "gym": true,
         "rooms":
             [
                 {
@@ -219,6 +225,8 @@
     {
         "hotel_id": "c552dad9-7a98-4123-82ae-b7737eff7e86",
         "name": "Sandra's Bed and Breakfast",
+        "pool": true,
+        "gym": true,
         "rooms":
             [
                 {
@@ -291,6 +299,8 @@
     {
         "hotel_id": "044262c3-3866-48fc-883f-dc6364c8081a",
         "name": "Marriott",
+        "pool": true,
+        "gym": false,
         "rooms":
             [
                 {

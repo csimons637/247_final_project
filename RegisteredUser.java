@@ -1,22 +1,22 @@
-import java.time.LocalDate;
+import java.util.Date;
+import java.util.UUID;
 import java.util.ArrayList;
 import java.util.HashMap;
 
 public class RegisteredUser extends User {
-    public String userName;
-    public String password;
-    public HashMap<String, String> preferences;
+    private UUID userID;
+    private String userName;
+    private String password;
+    private HashMap<String, String> preferences;
     private String email;
-    public Passport passport;
     private ArrayList<Passport> guests;
-    private LocalDate birthdate;
-    public int luggage;
+    private Date birthdate;
+    private int luggage;
     private Booking booking;
 
-    public RegisteredUser(String firstName, String lastName, String address, Passport passport, LocalDate birthdate, 
-                          String email, ArrayList<Passport> friends ) {
-        super(firstName, lastName, address, birthdate, email, friends);
-        this.passport = passport;
+    public RegisteredUser(UUID id, String firstName, String lastName, String address, Date birthdate, 
+                          String email, ArrayList<Passport> friends) {
+        super(id, firstName, lastName, address, birthdate, email, friends);
         this.birthdate = birthdate;
     }
 
@@ -32,11 +32,11 @@ public class RegisteredUser extends User {
 
     }
 
-    protected void setFirstName() {
+    public void setFirstName() {
 
     }
 
-    protected void setLastName() {
+    public void setLastName() {
 
     }
 

@@ -31,6 +31,8 @@ public class DataConstants {
     protected static final String ROOM_NUM = "number";
     protected static final String ROOM_TYPE = "type";
     protected static final String ROOM_AVAIL = "availability";
+    protected static final String POOL = "pool";
+    protected static final String GYM = "gym";
     // Users Constants
     protected static final String USER_ID = "user_id";
     protected static final String FIRST = "first_name";

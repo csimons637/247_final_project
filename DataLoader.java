@@ -95,6 +95,8 @@ public class DataLoader extends DataConstants {
                 // Hotel Object grabbed from JSON, retrieve details
                 UUID hotelID = UUID.fromString((String)hotelJSON.get(HOTEL_ID));
                 String hotelName = (String)hotelJSON.get(HOTEL_NAME);
+                Boolean hasPool = (Boolean)hotelJSON.get(POOL);
+                Boolean hasGym = (Boolean)hotelJSON.get(GYM);
                 ArrayList<Room> rooms = new ArrayList<Room>();
     
                 for (int j = 0; j < hotelRooms.size(); j++) {
@@ -113,7 +115,7 @@ public class DataLoader extends DataConstants {
                     rooms.add(new Room(num, roomType, avail));
                 }
     
-                hotels.add(new Hotel(hotelName, hotelID, rooms));
+                hotels.add(new Hotel(hotelName, hotelID, rooms, hasGym, hasPool));
                 System.out.println(hotelID.toString());
             }
             reader.close();
@@ -139,7 +141,7 @@ public class DataLoader extends DataConstants {
 
             for (int i = 0; i < usersJSON.size(); i++) {
                 JSONObject userJSON = (JSONObject)usersJSON.get(i);
-                ArrayList<Passport> friendIDs = new ArrayList<Passport>();
+                ArrayList<Passport> passports = new ArrayList<Passport>();
 
                 UUID userID = UUID.fromString((String)userJSON.get(USER_ID));
                 String first = (String)userJSON.get(FIRST);
@@ -153,10 +155,10 @@ public class DataLoader extends DataConstants {
                     JSONObject friend = (JSONObject)friends.get(i);
                     Passport friendPass = Passports.getInstance().getPassportByUUID(UUID.fromString((String)friend.get(FRIEND_ID)));
 
-                    friendIDs.add(friendPass);
+                    passports.add(friendPass);
                 }
 
-                users.add(new User(first, last, address, birthdate, email, friendIDs));
+                users.add(new RegisteredUser(userID, first, last, address, birthdate, email, passports));
             }
             reader.close();
             return users;
@@ -232,7 +234,6 @@ public class DataLoader extends DataConstants {
                     UUID flightID = UUID.fromString((String)flight.get(FLIGHT_ID));
                     flights.add(flightID);
                 }
-
                 for (int k = 0; k < seatsJSON.size(); k++) {
                     JSONObject seat = (JSONObject)seatsJSON.get(i);
                     String seatNum = (String)seat.get(SEAT);
