@@ -43,4 +43,8 @@ public class Flight {
     public UUID getUUID() {
         return this.uuid;
     }
+
+    public String toString() {
+        return null;
+    }
 }

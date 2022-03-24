@@ -20,15 +20,15 @@ public class RegisteredUser extends User {
         this.birthdate = birthdate;
     }
 
-    protected void setUserName() {
+    public void setUserName() {
 
     }
 
-    protected void setPassword(){
+    public void setPassword(){
 
     }
 
-    protected void setBirthDate() {
+    public void setBirthDate() {
 
     }
 
@@ -40,7 +40,7 @@ public class RegisteredUser extends User {
 
     }
 
-    protected void makePassport() {
+    public void makePassport() {
         
     }
 
