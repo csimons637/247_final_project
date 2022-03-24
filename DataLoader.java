@@ -1,8 +1,11 @@
 import java.io.FileReader;
-
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.UUID;
-import java.time.*;
+import java.util.Date;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 
 // JSON parsing, objects and arrays
 import org.json.simple.JSONArray;
@@ -12,8 +15,27 @@ import org.json.simple.parser.JSONParser;
 
 public class DataLoader extends DataConstants {
 
+    // Parses dates from Strings
+    public static Date parseDate(String date) {
+        try {
+            return new SimpleDateFormat("MM/dd/yyyy").parse(date);
+        } catch (ParseException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    public static LocalTime parseTime(String time) {
+        try {
+            return LocalTime.parse(time, DateTimeFormatter.ofPattern("HH:mm"));
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
     // Loads Flights from flights.json
-    public static ArrayList<Flight> getFlights() {
+    public static ArrayList<Flight> getAllFlights() {
         ArrayList<Flight> flights = new ArrayList<Flight>();
 
         try {
@@ -21,54 +43,55 @@ public class DataLoader extends DataConstants {
             JSONParser parser = new JSONParser();
             JSONArray flightsJSON = (JSONArray)parser.parse(reader);
             JSONArray flightSeats = (JSONArray)new JSONObject().get(SEATS);
+            flightSeats = new JSONArray();
     
             for (int i = 0; i < flightsJSON.size(); i++) {
                 JSONObject flightJSON = (JSONObject)flightsJSON.get(i);
 
                 UUID flightID = UUID.fromString((String)flightJSON.get(FLIGHT_ID));
-                int flightNumber = (int)flightJSON.get(FLIGHT_NUM);
+                String flightNumber = (String)flightJSON.get(FLIGHT_NUM);
                 String planeType = (String)flightJSON.get(PLANE);
                 String airline = (String)flightJSON.get(AIRLINE);
                 String dest_airport = (String)flightJSON.get(DEST);
                 String dep_airport = (String)flightJSON.get(DEPART);
-                LocalDate departDate = (LocalDate)flightJSON.get(DEP_DATE);
-                LocalTime depart = (LocalTime)flightJSON.get(DEPART_TIME);
-                LocalTime arrive = (LocalTime)flightJSON.get(ARRIVAL_TIME);
+                Date departDate = parseDate((String)flightJSON.get(DEP_DATE));
+                LocalTime depart = parseTime((String)flightJSON.get(DEPART_TIME));
+                LocalTime arrive = parseTime((String)flightJSON.get(ARRIVAL_TIME));
                 ArrayList<String> seats = new ArrayList<String>();
 
                 for (int j = 0; j < flightSeats.size(); j++) {
-                    String seatNum = (String)flightSeats.get(i);
-                    seats.add(seatNum);
+                    seats.add((String)flightSeats.get(i));
                 }
 
                 flights.add(new Flight(flightID, flightNumber, planeType,
                                 airline, dest_airport, dep_airport, departDate,
                                 depart, arrive, seats));
+                System.out.println(flightID.toString());
             }
             reader.close();
-            return flights;
+            // return flights;
 
         } catch (Exception e) {
             e.printStackTrace();
         }
 
-        return null;
+        return flights;
     }
 
 
     // Loads Hotels (and their rooms) from hotels.json
-    public static ArrayList<Hotel> getHotels() {
+    public static ArrayList<Hotel> getAllHotels() {
         ArrayList<Hotel> hotels = new ArrayList<Hotel>();
 
         try {
             FileReader reader = new FileReader(HOTELS_FILE);
             JSONParser parser = new JSONParser();
             JSONArray hotelsJSON = (JSONArray)parser.parse(reader);
-            JSONArray hotelRooms = (JSONArray)new JSONObject().get(ROOMS);
-            JSONArray roomAvail = (JSONArray)new JSONObject().get(ROOM_AVAIL);
+            
     
             for (int i = 0; i < hotelsJSON.size(); i++) {
                 JSONObject hotelJSON = (JSONObject)hotelsJSON.get(i);
+                JSONArray hotelRooms = (JSONArray)hotelJSON.get(ROOMS);
                 // Hotel Object grabbed from JSON, retrieve details
                 UUID hotelID = UUID.fromString((String)hotelJSON.get(HOTEL_ID));
                 String hotelName = (String)hotelJSON.get(HOTEL_NAME);
@@ -76,17 +99,22 @@ public class DataLoader extends DataConstants {
     
                 for (int j = 0; j < hotelRooms.size(); j++) {
                     JSONObject hotelRoom = (JSONObject)hotelRooms.get(i);
+                    JSONArray roomAvail = (JSONArray)hotelRoom.get(ROOM_AVAIL);
                     String num = (String)hotelRoom.get(ROOM_NUM);
                     String roomType = (String)hotelRoom.get(ROOM_TYPE);
     
-                    ArrayList<LocalDate> avail = new ArrayList<LocalDate>();
-                    avail = (ArrayList<LocalDate>)roomAvail; // Should cast the JSONArray to ArrayList<String>
+                    ArrayList<Date> avail = new ArrayList<Date>();
+
+                    for (int k = 0; k < roomAvail.size(); k++) {
+                        Date date = parseDate((String)roomAvail.get(k));
+                        avail.add(date);
+                    }
     
-                    Room room = new Room(num, roomType, avail);
-                    rooms.add(room);
+                    rooms.add(new Room(num, roomType, avail));
                 }
     
-                hotels.add(new Hotel(hotelName, hotelID));
+                hotels.add(new Hotel(hotelName, hotelID, rooms));
+                System.out.println(hotelID.toString());
             }
             reader.close();
             return hotels;
@@ -100,7 +128,7 @@ public class DataLoader extends DataConstants {
 
 
     // Loads Users from users.json
-    public static ArrayList<User> getUsers() {
+    public static ArrayList<User> getAllUsers() {
         ArrayList<User> users = new ArrayList<User>();
 
         try {
@@ -117,14 +145,15 @@ public class DataLoader extends DataConstants {
                 String first = (String)userJSON.get(FIRST);
                 String last = (String)userJSON.get(LAST);
                 String address = (String)userJSON.get(ADDRESS);
-                LocalDate birthdate = (LocalDate)userJSON.get(BIRTH);
+                Date birthdate = parseDate((String)userJSON.get(BIRTH));
                 String username = (String)userJSON.get(UNAME);
                 String email = (String)userJSON.get(EMAIL);
 
                 for (int j = 0; j < friends.size(); j++) {
                     JSONObject friend = (JSONObject)friends.get(i);
-                    UUID friendID = UUID.fromString((String)friend.get(FRIEND_ID));
-                    friendIDs.add(getPassportByUUID(friendID));
+                    Passport friendPass = Passports.getInstance().getPassportByUUID(UUID.fromString((String)friend.get(FRIEND_ID)));
+
+                    friendIDs.add(friendPass);
                 }
 
                 users.add(new User(first, last, address, birthdate, email, friendIDs));
@@ -141,7 +170,7 @@ public class DataLoader extends DataConstants {
 
 
     // Loads Bookings from bookings.json
-    public static ArrayList<Booking> getBookings() {
+    public static ArrayList<Booking> getAllBookings() {
         ArrayList<Booking> bookings = new ArrayList<Booking>();
 
         try {
@@ -178,25 +207,25 @@ public class DataLoader extends DataConstants {
 
 
     // Loads Friends from friends.json
-    public static ArrayList<Passport> getFriends() {
+    public static ArrayList<Passport> getAllFriends() {
         ArrayList<Passport> friends = new ArrayList<Passport>();
 
         try {
             FileReader reader = new FileReader(FRIENDS_FILE);
             JSONParser parser = new JSONParser();
             JSONArray friendsJSON = (JSONArray)parser.parse(reader);
-            JSONArray flightsJSON = (JSONArray)new JSONObject().get(FLIGHTS);
-            JSONArray seatsJSON = (JSONArray)new JSONObject().get(SEATS);
 
             for (int i = 0; i < friendsJSON.size(); i++) {
                 JSONObject friendJSON = (JSONObject)friendsJSON.get(i);
+                JSONArray flightsJSON = (JSONArray)friendJSON.get(FLIGHTS);
+                JSONArray seatsJSON = (JSONArray)friendJSON.get(SEATS);
                 ArrayList<UUID> flights = new ArrayList<UUID>();
                 ArrayList<String> seats = new ArrayList<String>();
-                UUID pass = UUID.fromString((String)friendJSON.get(PASS));
+                UUID passport = UUID.fromString((String)friendJSON.get(PASS));
                 String fName = (String)friendJSON.get(FIRST);
                 String lName = (String)friendJSON.get(LAST);
                 String address = (String)friendJSON.get(ADDRESS);
-                LocalDate birth = (LocalDate)friendJSON.get(BIRTH);
+                Date birth = parseDate((String)friendJSON.get(BIRTH));
 
                 for (int j = 0; j < flightsJSON.size(); j++) {
                     JSONObject flight = (JSONObject)flightsJSON.get(i);
@@ -210,7 +239,7 @@ public class DataLoader extends DataConstants {
                     seats.add(seatNum);
                 }
 
-                friends.add(new Passport(fName, lName, address, birth, pass, flights, seats));
+                friends.add(new Passport(fName, lName, address, birth, passport, flights, seats));
             }
             reader.close();
             return friends;
@@ -224,8 +253,11 @@ public class DataLoader extends DataConstants {
 
 
     public static void main(String args[]) {
+        ArrayList<Passport> friends = getAllFriends();
 
+        System.out.println("Passports: ");
+        for (Passport p : friends) {
+            System.out.println(p);
+        }
     }
-
-    // Repeat above for flights, hotels, etc.
 }
