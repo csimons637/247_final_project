@@ -11,4 +11,8 @@ public class Hotel {
         this.name = name;
         this.rooms = rooms;
     }
+
+    public UUID getUUID() {
+        return this.uuid;
+    }
 }
