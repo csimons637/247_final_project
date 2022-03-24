@@ -87,13 +87,11 @@ public class DataLoader extends DataConstants {
             FileReader reader = new FileReader(HOTELS_FILE);
             JSONParser parser = new JSONParser();
             JSONArray hotelsJSON = (JSONArray)parser.parse(reader);
-            JSONArray hotelRooms = (JSONArray)new JSONObject().get(ROOMS);
-            JSONArray roomAvail = (JSONArray)new JSONObject().get(ROOM_AVAIL);
-            hotelRooms = new JSONArray();
-            roomAvail = new JSONArray();
+            
     
             for (int i = 0; i < hotelsJSON.size(); i++) {
                 JSONObject hotelJSON = (JSONObject)hotelsJSON.get(i);
+                JSONArray hotelRooms = (JSONArray)hotelJSON.get(ROOMS);
                 // Hotel Object grabbed from JSON, retrieve details
                 UUID hotelID = UUID.fromString((String)hotelJSON.get(HOTEL_ID));
                 String hotelName = (String)hotelJSON.get(HOTEL_NAME);
@@ -101,6 +99,7 @@ public class DataLoader extends DataConstants {
     
                 for (int j = 0; j < hotelRooms.size(); j++) {
                     JSONObject hotelRoom = (JSONObject)hotelRooms.get(i);
+                    JSONArray roomAvail = (JSONArray)hotelRoom.get(ROOM_AVAIL);
                     String num = (String)hotelRoom.get(ROOM_NUM);
                     String roomType = (String)hotelRoom.get(ROOM_TYPE);
     
@@ -111,11 +110,10 @@ public class DataLoader extends DataConstants {
                         avail.add(date);
                     }
     
-                    Room room = new Room(num, roomType, avail);
-                    rooms.add(room);
+                    rooms.add(new Room(num, roomType, avail));
                 }
     
-                hotels.add(new Hotel(hotelName, hotelID));
+                hotels.add(new Hotel(hotelName, hotelID, rooms));
                 System.out.println(hotelID.toString());
             }
             reader.close();
@@ -153,7 +151,7 @@ public class DataLoader extends DataConstants {
 
                 for (int j = 0; j < friends.size(); j++) {
                     JSONObject friend = (JSONObject)friends.get(i);
-                    Passport friendPass = getPassportByUUID(UUID.fromString((String)friend.get(FRIEND_ID)));
+                    Passport friendPass = Passports.getInstance().getPassportByUUID(UUID.fromString((String)friend.get(FRIEND_ID)));
 
                     friendIDs.add(friendPass);
                 }
@@ -216,14 +214,14 @@ public class DataLoader extends DataConstants {
             FileReader reader = new FileReader(FRIENDS_FILE);
             JSONParser parser = new JSONParser();
             JSONArray friendsJSON = (JSONArray)parser.parse(reader);
-            JSONArray flightsJSON = (JSONArray)new JSONObject().get(FLIGHTS);
-            JSONArray seatsJSON = (JSONArray)new JSONObject().get(SEATS);
 
             for (int i = 0; i < friendsJSON.size(); i++) {
                 JSONObject friendJSON = (JSONObject)friendsJSON.get(i);
+                JSONArray flightsJSON = (JSONArray)friendJSON.get(FLIGHTS);
+                JSONArray seatsJSON = (JSONArray)friendJSON.get(SEATS);
                 ArrayList<UUID> flights = new ArrayList<UUID>();
                 ArrayList<String> seats = new ArrayList<String>();
-                UUID pass = UUID.fromString((String)friendJSON.get(PASS));
+                UUID passport = UUID.fromString((String)friendJSON.get(PASS));
                 String fName = (String)friendJSON.get(FIRST);
                 String lName = (String)friendJSON.get(LAST);
                 String address = (String)friendJSON.get(ADDRESS);
@@ -241,7 +239,7 @@ public class DataLoader extends DataConstants {
                     seats.add(seatNum);
                 }
 
-                friends.add(new Passport(fName, lName, address, birth, pass, flights, seats));
+                friends.add(new Passport(fName, lName, address, birth, passport, flights, seats));
             }
             reader.close();
             return friends;
@@ -255,13 +253,11 @@ public class DataLoader extends DataConstants {
 
 
     public static void main(String args[]) {
-        System.out.println("Flights: ");
-        getAllFlights();
-        System.out.println("Hotels: ");
-        getAllHotels();
-        System.out.println("Friends: ");
-        getAllFriends();
-    }
+        ArrayList<Passport> friends = getAllFriends();
 
-    // Repeat above for flights, hotels, etc.
+        System.out.println("Passports: ");
+        for (Passport p : friends) {
+            System.out.println(p);
+        }
+    }
 }

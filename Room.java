@@ -4,13 +4,13 @@ import java.util.Date;
 public class Room {
     public String roomNum;
     public String roomType;
-    public ArrayList<Date> availabilities;
-    public ArrayList<Date> daysBooked;
+    public ArrayList<Date> availabilities = new ArrayList<Date>();
+    public ArrayList<Date> daysBooked = new ArrayList<Date>();
 
     public Room(String roomNum, String roomType, ArrayList<Date> avail){
         this.roomNum = roomNum;
         this.roomType = roomType;
-        availabilities = new ArrayList<Date>();
-        daysBooked = new ArrayList<Date>();
+        availabilities = avail;
+        daysBooked = null;
     }
 }
