@@ -179,7 +179,6 @@ public class DataLoader extends DataConstants {
             FileReader reader = new FileReader(BOOKING_FILE);
             JSONParser parser = new JSONParser();
             JSONArray bookingsJSON = (JSONArray)parser.parse(reader);
-            JSONArray friends = (JSONArray)new JSONObject().get(ADDL_PPL);
 
             for (int i = 0; i < bookingsJSON.size(); i++) {
                 JSONObject bookingJSON = (JSONObject)bookingsJSON.get(i);
@@ -188,6 +187,8 @@ public class DataLoader extends DataConstants {
                 UUID bookID = UUID.fromString((String)bookingJSON.get(BOOK));
                 UUID ownerID = UUID.fromString((String)bookingJSON.get(OWN));
                 UUID hotelID = UUID.fromString((String)bookingJSON.get(HOTEL));
+
+                JSONArray friends = (JSONArray)bookingJSON.get(ADDL_PPL);
 
                 for (int j = 0; j < friends.size(); j++) {
                     JSONObject friend = (JSONObject)friends.get(i);
@@ -254,11 +255,6 @@ public class DataLoader extends DataConstants {
 
 
     public static void main(String args[]) {
-        ArrayList<Passport> friends = getAllFriends();
 
-        System.out.println("Passports: ");
-        for (Passport p : friends) {
-            System.out.println(p);
-        }
     }
 }
