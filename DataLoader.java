@@ -137,10 +137,10 @@ public class DataLoader extends DataConstants {
             FileReader reader = new FileReader(USER_FILE);
             JSONParser parser = new JSONParser();
             JSONArray usersJSON = (JSONArray)parser.parse(reader);
-            JSONArray friends = (JSONArray)new JSONObject().get(FRIENDS);
 
             for (int i = 0; i < usersJSON.size(); i++) {
                 JSONObject userJSON = (JSONObject)usersJSON.get(i);
+                JSONArray friends = (JSONArray)userJSON.get(FRIENDS);
                 ArrayList<Passport> passports = new ArrayList<Passport>();
 
                 UUID userID = UUID.fromString((String)userJSON.get(USER_ID));
@@ -153,12 +153,12 @@ public class DataLoader extends DataConstants {
 
                 for (int j = 0; j < friends.size(); j++) {
                     JSONObject friend = (JSONObject)friends.get(i);
-                    Passport friendPass = Passports.getInstance().getPassportByUUID(UUID.fromString((String)friend.get(FRIEND_ID)));
+                    Passport friendPass = Passports.getInstance().getPassportsByUUID(UUID.fromString((String)friend.get(FRIEND_ID)));
 
                     passports.add(friendPass);
                 }
 
-                users.add(new RegisteredUser(userID, first, last, address, birthdate, email, passports));
+                users.add(new RegisteredUser(userID, first, last, username, address, birthdate, email, passports));
             }
             reader.close();
             return users;
@@ -255,6 +255,9 @@ public class DataLoader extends DataConstants {
 
 
     public static void main(String args[]) {
-
+        ArrayList<User> users = getAllUsers();
+        for (User u : users) {
+            System.out.println(u);
+        }
     }
 }

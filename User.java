@@ -7,13 +7,15 @@ abstract class User {
     private String email;
     private String firstName;
     private String lastName;
+    private String username;
     private String address;
     private Date birthdate;
     private ArrayList<Passport> friends;
 
-    public User(UUID id, String firstName, String lastName, String address, Date birthdate, String email, ArrayList<Passport> friends) {
+    public User(UUID id, String firstName, String lastName, String username, String address, Date birthdate, String email, ArrayList<Passport> friends) {
         this.firstName = firstName;
         this.lastName = lastName;
+        this.username = username;
         this.address = address;
         this.email = email;
         this.birthdate = birthdate;
