@@ -45,6 +45,28 @@ public class Flight {
     }
 
     public String toString() {
-        return null;
+        String depTime = this.departTime.toString();
+        String arrTime = this.arrivalTime.toString();
+        String depDate = this.departureDate.toString();
+        String id = this.uuid.toString();
+        String seats = null;
+        for (String s : this.seats) {
+            seats += s;
+            for (int i = 0; i < this.seats.size()-1; i++) {
+                seats += ", ";
+            }
+        }
+
+        String output = "Flight ID: " + id;
+        output += "Flight Number: " + this.flightNumber;
+        output += "Airline: " + this.airline;
+        output += "Departure Location: " + this.departureLoc;
+        output += "Departure Date: " + depDate;
+        output += "Departure Time: " + depTime;
+        output += "Arrival Location: " + this.destination;
+        output += "Arrival Time: " + arrTime;
+        output += "Seats:\n" + seats;
+
+        return output;
     }
 }

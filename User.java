@@ -23,6 +23,17 @@ abstract class User {
         this.userID = id;
     }
 
+    public String toString() {
+        String output = "User ID: " + this.userID.toString() + '\n';
+        output += "Name:" + this.firstName + " ";
+        output += this.lastName + '\n';
+        output += "Username:" + this.username + '\n';
+        output += "Address: " + this.address + '\n';
+        output += "Birthdate: " + this.birthdate.toString();
+
+        return output;
+    }
+
     public void setFirstName() {
 
     }
