@@ -13,7 +13,7 @@ public class Passport {
     public ArrayList<UUID> flights;
     public ArrayList<String> seats;
 
-    private UUID passportNum;
+    private UUID passportID;
     public ArrayList<String> passportInfo;
 
     /**
@@ -26,12 +26,12 @@ public class Passport {
      * 
      */
 
-public Passport (String firstName, String lastName, String address, Date birthDate, UUID passportNum, ArrayList<UUID> flights, ArrayList<String> seats){
+public Passport (String firstName, String lastName, String address, Date birthDate, UUID passportID, ArrayList<UUID> flights, ArrayList<String> seats){
     this.firstName = firstName;
     this.lastName = lastName;
     this.address = address;
     this.birthDate = birthDate;
-    this.passportNum = passportNum;
+    this.passportID = passportID;
     this.flights = flights;
     this.seats = seats;
 
@@ -39,11 +39,7 @@ public Passport (String firstName, String lastName, String address, Date birthDa
 }
 
 public UUID getUUID(){
-    return this.passportNum;
-}
-
-public String toString(){
-    return null;
+    return this.passportID;
 }
 
 

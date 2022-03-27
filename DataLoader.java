@@ -153,7 +153,7 @@ public class DataLoader extends DataConstants {
 
                 for (int j = 0; j < friends.size(); j++) {
                     JSONObject friend = (JSONObject)friends.get(j);
-                    Passport friendPass = Passports.getInstance().getPassportsByUUID(UUID.fromString((String)friend.get(FRIEND_ID)));
+                    Passport friendPass = Passports.getInstance().getPassportsByUUID(UUID.fromString((String)friend.get(PASSPORT_ID)));
 
                     passports.add(friendPass);
                 }
@@ -192,7 +192,7 @@ public class DataLoader extends DataConstants {
 
                 for (int j = 0; j < friends.size(); j++) {
                     JSONObject friend = (JSONObject)friends.get(j);
-                    UUID friendID = UUID.fromString((String)friend.get(FRIEND_ID));
+                    UUID friendID = UUID.fromString((String)friend.get(PASSPORT_ID));
                     friendArray.add(friendID);
                 }
 
@@ -210,25 +210,25 @@ public class DataLoader extends DataConstants {
 
 
     // Loads Friends from friends.json
-    public static ArrayList<Passport> getAllFriends() {
-        ArrayList<Passport> friends = new ArrayList<Passport>();
+    public static ArrayList<Passport> getAllPassports() {
+        ArrayList<Passport> passports = new ArrayList<Passport>();
 
         try {
-            FileReader reader = new FileReader(FRIENDS_FILE);
+            FileReader reader = new FileReader(PASSPORTS_FILE);
             JSONParser parser = new JSONParser();
-            JSONArray friendsJSON = (JSONArray)parser.parse(reader);
+            JSONArray passportsJSON = (JSONArray)parser.parse(reader);
 
-            for (int i = 0; i < friendsJSON.size(); i++) {
-                JSONObject friendJSON = (JSONObject)friendsJSON.get(i);
-                JSONArray flightsJSON = (JSONArray)friendJSON.get(FLIGHTS);
-                JSONArray seatsJSON = (JSONArray)friendJSON.get(SEATS);
+            for (int i = 0; i < passportsJSON.size(); i++) {
+                JSONObject passportJSON = (JSONObject)passportsJSON.get(i);
+                JSONArray flightsJSON = (JSONArray)passportJSON.get(FLIGHTS);
+                JSONArray seatsJSON = (JSONArray)passportJSON.get(SEATS);
                 ArrayList<UUID> flights = new ArrayList<UUID>();
                 ArrayList<String> seats = new ArrayList<String>();
-                UUID passport = UUID.fromString((String)friendJSON.get(PASS));
-                String fName = (String)friendJSON.get(FIRST);
-                String lName = (String)friendJSON.get(LAST);
-                String address = (String)friendJSON.get(ADDRESS);
-                Date birth = parseDate((String)friendJSON.get(BIRTH));
+                UUID passport = UUID.fromString((String)passportJSON.get(PASS));
+                String fName = (String)passportJSON.get(FIRST);
+                String lName = (String)passportJSON.get(LAST);
+                String address = (String)passportJSON.get(ADDRESS);
+                Date birth = parseDate((String)passportJSON.get(BIRTH));
 
                 for (int j = 0; j < flightsJSON.size(); j++) {
                     JSONObject flight = (JSONObject)flightsJSON.get(j);
@@ -241,10 +241,10 @@ public class DataLoader extends DataConstants {
                     seats.add(seatNum);
                 }
 
-                friends.add(new Passport(fName, lName, address, birth, passport, flights, seats));
+                passports.add(new Passport(fName, lName, address, birth, passport, flights, seats));
             }
             reader.close();
-            return friends;
+            return passports;
 
         } catch (Exception e) {
             e.printStackTrace();
