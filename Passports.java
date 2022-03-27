@@ -6,7 +6,7 @@ public class Passports {
     private ArrayList<Passport> passports = new ArrayList<Passport>();
 
     private Passports(){
-        passports = DataLoader.getAllFriends();
+        passports = DataLoader.getAllPassports();
     }
 
     public static Passports getInstance(){
@@ -21,7 +21,7 @@ public class Passports {
     }
 
     public ArrayList<Passport> getAllPassports(){
-        return DataLoader.getAllFriends();
+        return DataLoader.getAllPassports();
     }
     
     public Passport getPassportsByUUID(UUID passport_id) {
