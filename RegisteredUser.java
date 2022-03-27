@@ -14,9 +14,9 @@ public class RegisteredUser extends User {
     private int luggage;
     private Booking booking;
 
-    public RegisteredUser(UUID id, String firstName, String lastName, String address, Date birthdate, 
+    public RegisteredUser(UUID id, String firstName, String lastName, String username, String address, Date birthdate, 
                           String email, ArrayList<Passport> friends) {
-        super(id, firstName, lastName, address, birthdate, email, friends);
+        super(id, firstName, lastName, username, address, birthdate, email, friends);
         this.birthdate = birthdate;
     }
 

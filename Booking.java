@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.UUID;
 
 public class Booking {
@@ -16,7 +15,22 @@ public class Booking {
     }
 
     public String toString() {
-        return null;
+        String friends= null;
+        for (UUID id : this.friends) {
+            friends += id.toString();
+            friends += '\n';
+        }
+
+        String id = this.bookingID.toString() + '\n';
+        String owner = this.ownerID.toString() + '\n';
+        String hotel = this.hotel.toString();
+
+        String output = "Booking ID: " + id + '\n';
+        output += "User ID: " + owner + '\n';
+        output += "Guest ID(s): " + friends + '\n';
+        output += "Hotel ID: " + hotel;
+
+        return output;
     }
 
     public static String getCancellation() {

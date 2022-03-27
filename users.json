@@ -4,9 +4,9 @@
         "first_name": "J. Jonah",
         "last_name": "Jameson",
         "username": "jjameson23",
-        "email": "...",
-        "address": "...",
-        "birthdate": "...",
+        "email": "jjameson28@aol.com",
+        "address": "1223 Broadway",
+        "birthdate": "05/15/1975",
         "friends":
             [
                 {
@@ -20,14 +20,13 @@
                     ],
                     "hotels":
                     [
-                        {"hotelid":"sdfsfw",
-                        "hotelroom":"sfe",
-                        "checkindate":"sdfsd",
-                        "checkoutdate":"dsfew"}
+                        {
+                            "hotel_id":"sdfsfw",
+                            "hotelroom":"sfe",
+                            "checkindate":"sdfsd",
+                            "checkoutdate":"dsfew"
+                        }
                     ]
-                },
-                {
-                    "passport_id": "8306c0a6-8450-4813-b8f3-08c9e17d84b1"
                 }
             ]
     },

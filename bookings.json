@@ -1,15 +1,15 @@
 [
     {
-        "booking_id": "...",
-        "owner_id": "...",
-        "hotel_id": "...",
+        "booking_id": "e1fe8ab3-567d-4168-a1f7-070b95c7edea",
+        "owner_id": "c1645ea6-d189-4a31-a379-6556e870559f",
+        "hotel_id": "483ff49a-084d-49d9-8f1e-0cabc2b8d293",
         "assoc_people":
             [
                 {
-                    "friend_id": "..."
+                    "friend_id": "5f4e888d-a13c-4ca9-bc34-e44a97b45238"
                 },
                 {
-                    "friend_id": "..."
+                    "friend_id": "dde8a3c2-49a5-4b47-ad0f-196110997797"
                 }
             ]
     }

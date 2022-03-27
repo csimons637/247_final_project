@@ -13,4 +13,12 @@ public class Room {
         availabilities = avail;
         daysBooked = null;
     }
+
+    public String getNum() {
+        return this.roomNum;
+    }
+    
+    public String getType() {
+        return this.roomType;
+    }
 }

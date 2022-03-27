@@ -21,7 +21,27 @@ public class Hotel {
     }
 
     public String toString() {
-        return null;
+        String id = this.uuid.toString();
+        String pool = "1 pool";
+        String gym = "1 gym";
+        String rooms = null;
+
+        for (Room r : this.rooms) {
+            rooms += "Room Number: " + r.getNum() + "\tRoom Type: " + r.getType() + "\n";
+        }
+
+        if (!this.hasPool)
+            pool = "No pools";
+        if (!this.hasGym)
+            gym = "No gym";
+
+        String output = id + '\n';
+        output += name + '\n';
+        output += pool + '\n';
+        output += gym + '\n';
+        output += rooms;
+
+        return output;
     }
 
     public String getName() {
