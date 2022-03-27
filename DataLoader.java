@@ -60,7 +60,7 @@ public class DataLoader extends DataConstants {
                 ArrayList<String> seats = new ArrayList<String>();
 
                 for (int j = 0; j < flightSeats.size(); j++) {
-                    seats.add((String)flightSeats.get(i));
+                    seats.add((String)flightSeats.get(j));
                 }
 
                 flights.add(new Flight(flightID, flightNumber, planeType,
@@ -152,7 +152,7 @@ public class DataLoader extends DataConstants {
                 String email = (String)userJSON.get(EMAIL);
 
                 for (int j = 0; j < friends.size(); j++) {
-                    JSONObject friend = (JSONObject)friends.get(i);
+                    JSONObject friend = (JSONObject)friends.get(j);
                     Passport friendPass = Passports.getInstance().getPassportsByUUID(UUID.fromString((String)friend.get(FRIEND_ID)));
 
                     passports.add(friendPass);
@@ -191,7 +191,7 @@ public class DataLoader extends DataConstants {
                 JSONArray friends = (JSONArray)bookingJSON.get(ADDL_PPL);
 
                 for (int j = 0; j < friends.size(); j++) {
-                    JSONObject friend = (JSONObject)friends.get(i);
+                    JSONObject friend = (JSONObject)friends.get(j);
                     UUID friendID = UUID.fromString((String)friend.get(FRIEND_ID));
                     friendArray.add(friendID);
                 }
@@ -231,12 +231,12 @@ public class DataLoader extends DataConstants {
                 Date birth = parseDate((String)friendJSON.get(BIRTH));
 
                 for (int j = 0; j < flightsJSON.size(); j++) {
-                    JSONObject flight = (JSONObject)flightsJSON.get(i);
+                    JSONObject flight = (JSONObject)flightsJSON.get(j);
                     UUID flightID = UUID.fromString((String)flight.get(FLIGHT_ID));
                     flights.add(flightID);
                 }
                 for (int k = 0; k < seatsJSON.size(); k++) {
-                    JSONObject seat = (JSONObject)seatsJSON.get(i);
+                    JSONObject seat = (JSONObject)seatsJSON.get(k);
                     String seatNum = (String)seat.get(SEAT);
                     seats.add(seatNum);
                 }
@@ -257,7 +257,7 @@ public class DataLoader extends DataConstants {
     public static void main(String args[]) {
         ArrayList<User> users = getAllUsers();
         for (User u : users) {
-            System.out.println(u);
+            System.out.println(u.toString());
         }
     }
 }
