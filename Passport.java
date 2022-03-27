@@ -38,6 +38,14 @@ public Passport (String firstName, String lastName, String address, Date birthDa
     passportInfo = new ArrayList<>();
 }
 
+public UUID getUUID(){
+    return this.passportNum;
+}
+
+public String toString(){
+    return null;
+}
+
 
 
 
