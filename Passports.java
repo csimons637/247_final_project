@@ -5,7 +5,6 @@ public class Passports {
     private static Passports passport;
     private ArrayList<Passport> passports = new ArrayList<Passport>();
 
-<<<<<<< HEAD
     private Passports(){
         passports = DataLoader.getAllFriends();
     }
@@ -21,17 +20,6 @@ public class Passports {
         return true;
     }
 
-=======
-    private Passports() {
-        passports = DataLoader.getAllFriends();
-    }
-    public static Passports getInstance() {
-        if (passport == null)
-            passport = new Passports();
-        return passport;
-    }
-
->>>>>>> 8d3c9a9863fd28695f47ece6f0fe437dfe8af0e0
     public ArrayList<Passport> getAllPassports(){
         return DataLoader.getAllFriends();
     }
