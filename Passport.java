@@ -22,8 +22,7 @@ public class Passport {
      * @param lastName
      * @param address
      * @param birthDate 
-     * @param passportNum creates the arraylist for info 
-     * 
+     * @param passportNum creates the arraylist for info
      */
 
 public Passport (String firstName, String lastName, String address, Date birthDate, UUID passportID, ArrayList<UUID> flights, ArrayList<String> seats){
@@ -42,7 +41,12 @@ public UUID getUUID(){
     return this.passportID;
 }
 
+public UUID getFlightID() {
+    return flights.get(0);
+}
 
-
+public String getSeat() {
+    return this.seats.get(0);
+}
 
 }

@@ -38,7 +38,18 @@ public class DataWriter extends DataConstants {
         userDetails.put(EMAIL, user.getEmail());
         userDetails.put(ADDRESS, user.getAddress());
         userDetails.put(BIRTH, user.getBirthDate());
-        userDetails.put(FRIENDS, user.getFriends());
+
+        ArrayList<Passport> passports = user.getFriends();
+        JSONArray JSONPassports = new JSONArray();
+        JSONObject JSONPassport = new JSONObject();
+
+        for (Passport p : passports) {
+            JSONPassport.put(PASS, p.getUUID());
+            JSONPassport.put(FLIGHTS, p.getFlightID());
+            JSONPassport.put(SEAT, p.getSeat());
+        }
+
+        userDetails.put(FRIENDS, JSONPassports);
 
         return userDetails;
     }
@@ -74,7 +85,16 @@ public class DataWriter extends DataConstants {
         flightDetails.put(DEP_DATE, flight.getDepDate());
         flightDetails.put(DEPART_TIME, flight.getDepTime());
         flightDetails.put(ARRIVAL_TIME, flight.getArrvTime());
-        flightDetails.put(SEATS, flight.getSeats());
+
+        ArrayList<String> seats = flight.getSeats();
+        JSONArray JSONSeats = new JSONArray();
+        JSONObject JSONSeat = new JSONObject();
+
+        for (String s : seats) {
+            JSONSeat.put(SEATS, s);
+        }
+
+        flightDetails.put(SEATS, JSONSeat);
 
         return flightDetails;
     }

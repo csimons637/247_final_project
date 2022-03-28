@@ -61,14 +61,14 @@ public class Flight {
         }
 
         String output = "Flight ID: " + id;
-        output += "Flight Number: " + this.flightNumber;
-        output += "Airline: " + this.airline;
-        output += "Departure Location: " + this.departureLoc;
-        output += "Departure Date: " + depDate;
-        output += "Departure Time: " + depTime;
-        output += "Arrival Location: " + this.destination;
-        output += "Arrival Time: " + arrTime;
-        output += "Seats:\n" + seats;
+        output += "\nFlight Number: " + this.flightNumber;
+        output += "\nAirline: " + this.airline;
+        output += "\nDeparture Location: " + this.departureLoc;
+        output += "\nDeparture Date: " + depDate;
+        output += "\nDeparture Time: " + depTime;
+        output += "\nArrival Location: " + this.destination;
+        output += "\nArrival Time: " + arrTime;
+        output += "\nSeats:\n" + seats;
 
         return output;
     }
@@ -105,8 +105,7 @@ public class Flight {
         return this.arrivalTime.toString();
     }
 
-    public String getSeats() {
-        // This feels wrong, ask Portia
-        return this.seats.toString();
+    public ArrayList<String> getSeats() {
+        return this.seats;
     }
 }

@@ -70,8 +70,8 @@ abstract class User {
         return this.birthdate.toString();
     }
 
-    public String getFriends() {
+    public ArrayList getFriends() {
         // This feels wrong, ask Portia
-        return this.friends.toString();
+        return this.friends;
     }
 }

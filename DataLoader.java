@@ -255,9 +255,9 @@ public class DataLoader extends DataConstants {
 
 
     public static void main(String args[]) {
-        ArrayList<User> users = getAllUsers();
-        for (User u : users) {
-            System.out.println(u.toString());
+        ArrayList<Flight> flights = getAllFlights();
+        for (Flight f : flights) {
+            System.out.println(f.toString());
         }
     }
 }
