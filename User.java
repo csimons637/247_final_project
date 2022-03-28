@@ -45,4 +45,33 @@ abstract class User {
     public UUID getUUID() {
         return this.userID;
     }
+
+    public String getFirstName() {
+        return this.firstName;
+    }
+
+    public String getLastName() {
+        return this.lastName;
+    }
+
+    public String getUsername() {
+        return this.username;
+    }
+
+    public String getEmail() {
+        return this.email;
+    }
+
+    public String getAddress() {
+        return this.address;
+    }
+
+    public String getBirthDate() {
+        return this.birthdate.toString();
+    }
+
+    public String getFriends() {
+        // This feels wrong, ask Portia
+        return this.friends.toString();
+    }
 }

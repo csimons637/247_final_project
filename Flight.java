@@ -9,12 +9,14 @@ import java.util.UUID;
  */
 public class Flight {
     
+    private String planeType;
     private ArrayList<String> seats;
     private String destination;
     private LocalTime departTime;
     private LocalTime arrivalTime;
     private String departureLoc;
     private String flightNumber;
+    
 
     private UUID uuid;
     private String airline;
@@ -36,6 +38,7 @@ public class Flight {
         this.airline = airline;
         this.departureDate = departDate;
         this.flightNumber = flightNumber;
+        this.planeType = planeType;
 
         this.seats = seats;
     } 
@@ -68,5 +71,42 @@ public class Flight {
         output += "Seats:\n" + seats;
 
         return output;
+    }
+
+    public String getNum() {
+        return this.flightNumber;
+    }
+
+    public String getPlane() {
+        return this.planeType;
+    }
+
+    public String getAirline() {
+        return this.airline;
+    }
+
+    public String getDestination() {
+        return this.destination;
+    }
+
+    public String getDeparture() {
+        return this.departureLoc;
+    }
+
+    public String getDepDate() {
+        return this.departureDate.toString();
+    }
+
+    public String getDepTime() {
+        return this.departTime.toString();
+    }
+
+    public String getArrvTime() {
+        return this.arrivalTime.toString();
+    }
+
+    public String getSeats() {
+        // This feels wrong, ask Portia
+        return this.seats.toString();
     }
 }

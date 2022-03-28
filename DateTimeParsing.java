@@ -2,7 +2,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class deleteLater {
+public class DateTimeParsing {
     public static Date parseDate1(String date) {
         try {
             return new SimpleDateFormat("MM/dd/yyyy").parse(date);

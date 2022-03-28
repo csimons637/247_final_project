@@ -8,7 +8,7 @@ public class DataConstants {
     protected static final String PASSPORTS_FILE = "passports.json";
     protected static final String HOTELS_FILE = "hotels.json";
     protected static final String BOOKING_FILE = "bookings.json";
-    // Friends Constants
+    // Passports Constants
     protected static final String PASSPORT_ID = "passport_id";
     protected static final String FLIGHTS = "flights";
     protected static final String SEAT = "seat";
@@ -47,4 +47,6 @@ public class DataConstants {
     protected static final String OWN = "owner_id";
     protected static final String HOTEL = "hotel_id";
     protected static final String ADDL_PPL = "assoc_people";
+    // Test Constants
+    protected static final String TEST = "test.json";
 }
