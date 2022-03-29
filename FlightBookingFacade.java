@@ -5,15 +5,6 @@ public class FlightBookingFacade {
     private static FlightBookingFacade flightBookings;
     private Flight flights;
     private Hotel hotels;
-<<<<<<< HEAD
-    private User user;
-    private Scanner reader;
-
-    public FlightBookingFacade(Flight flights, Hotel hotels, User user){
-        this.flights = flights;
-        this.hotels = hotels;
-        this.user = user;
-=======
     
     private FlightBookingFacade() {}
 
@@ -22,7 +13,6 @@ public class FlightBookingFacade {
             flightBookings = new FlightBookingFacade();
         }
         return flightBookings;
->>>>>>> Tipton
     }
 
     private void searchHotel(){
