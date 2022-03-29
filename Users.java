@@ -17,6 +17,9 @@ public class Users {
     }
 
     public boolean haveUser(String keyword){
+        for (User user : users) {
+            
+        }
         return true;
     }
 
