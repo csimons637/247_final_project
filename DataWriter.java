@@ -14,7 +14,7 @@ import org.json.simple.JSONObject;
 public class DataWriter extends DataConstants {
     
     /**
-     * COnverts a Date to a String
+     * Converts a Date to a String
      * @param date - The date to be converted
      * @return - String representation of date
      */
