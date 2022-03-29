@@ -18,7 +18,7 @@ public class DataLoader extends DataConstants {
     // Parses dates from Strings
     public static Date parseDate(String date) {
         try {
-            return new SimpleDateFormat("MM/dd/yyyy").parse(date);
+            return new SimpleDateFormat("MM-dd-yyyy").parse(date);
         } catch (ParseException e) {
             e.printStackTrace();
             return null;
@@ -42,11 +42,11 @@ public class DataLoader extends DataConstants {
             FileReader reader = new FileReader(FLIGHTS_FILE);
             JSONParser parser = new JSONParser();
             JSONArray flightsJSON = (JSONArray)parser.parse(reader);
-            JSONArray flightSeats = (JSONArray)new JSONObject().get(SEATS);
-            flightSeats = new JSONArray();
     
             for (int i = 0; i < flightsJSON.size(); i++) {
                 JSONObject flightJSON = (JSONObject)flightsJSON.get(i);
+                JSONArray flightSeats = (JSONArray)flightJSON.get(SEATS);
+
 
                 UUID flightID = UUID.fromString((String)flightJSON.get(FLIGHT_ID));
                 String flightNumber = (String)flightJSON.get(FLIGHT_NUM);

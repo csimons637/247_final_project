@@ -93,16 +93,16 @@ public class Flight {
         return this.departureLoc;
     }
 
-    public String getDepDate() {
-        return this.departureDate.toString();
+    public Date getDepDate() {
+        return this.departureDate;
     }
 
-    public String getDepTime() {
-        return this.departTime.toString();
+    public LocalTime getDepTime() {
+        return this.departTime;
     }
 
-    public String getArrvTime() {
-        return this.arrivalTime.toString();
+    public LocalTime getArrvTime() {
+        return this.arrivalTime;
     }
 
     public ArrayList<String> getSeats() {

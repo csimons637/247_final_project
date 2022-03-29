@@ -6,7 +6,7 @@
         "username": "jjameson23",
         "email": "jjameson28@aol.com",
         "address": "1223 Broadway",
-        "birthdate": "05/15/1975",
+        "birthdate": "05-15-1975",
         "friends":
             [
                 {
@@ -37,14 +37,14 @@
         "username": "peterpark89",
         "email": "...",
         "address": "...",
-        "birthdate": "10/08/1973",
+        "birthdate": "10-08-1973",
         "friends":
             [
                 {
                     "passport_id": "5f4e888d-a13c-4ca9-bc34-e44a97b45238"
                 },
                 {
-                    "passport_id": "8306c0a6-8450-4813-b8f3-08c9e17d84b1"
+                    "passport_id": "2c73dfb4-ea1d-4c3e-abd4-aa8ed444695f"
                 }
             ]
     },
@@ -55,7 +55,7 @@
         "username": "cwash_1233",
         "email": "...",
         "address": "...",
-        "birthdate": "10/19/1980",
+        "birthdate": "10-19-1980",
         "friends":
             [
                 {
@@ -73,7 +73,7 @@
         "username": "jdam1co",
         "email": "...",
         "address": "...",
-        "birthdate": "05/07/1982",
+        "birthdate": "05-07-1982",
         "friends":
             [
                 {
@@ -91,7 +91,7 @@
         "username": "bern_sand12",
         "email": "...",
         "address": "...",
-        "birthdate": "09/06/1982",
+        "birthdate": "09-06-1982",
         "friends":
             [
                 {
@@ -109,7 +109,7 @@
         "username": "jdoe1234",
         "email": "jdoe234@gmail.com",
         "address": "...",
-        "birthdate": "11/07/1994",
+        "birthdate": "11-07-1994",
         "friends":
             [
                 {

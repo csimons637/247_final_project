@@ -1,10 +1,30 @@
 [
     {
+        "passport_id": "8306c0a6-8450-4813-b8f3-08c9e17d84b1",
+        "first_name": "Petter",
+        "last_name": "Parker",
+        "address": "123 Road Street",
+        "birthdate": "12-12-1927",
+        "flights":
+            [
+                {
+                    "flight_id": "70c6591e-8616-4b7e-b26b-e61625ac9a5a"
+                }
+            ],
+        "seats":
+            [
+                {
+                    "seat": "3B"
+                }
+            ]
+
+    },
+    {
         "passport_id": "5f4e888d-a13c-4ca9-bc34-e44a97b45238",
         "first_name": "Ava",
         "last_name": "DuPre",
         "address": "123 Road Street",
-        "birthdate": "12/12/1927",
+        "birthdate": "12-12-1927",
         "flights":
             [
                 {
@@ -23,7 +43,7 @@
         "first_name": "Breanna",
         "last_name": "Compton",
         "address": "54321 West Main Street",
-        "birthdate": "12/13/2007",
+        "birthdate": "12-13-2007",
         "flights":
             [
                 {
@@ -42,7 +62,7 @@
         "first_name": "Steven",
         "last_name": "Jobs",
         "address": "1 Infinite Loop",
-        "birthdate": "02/24/1955",
+        "birthdate": "02-24-1955",
         "flights":
             [
                 {
@@ -61,7 +81,7 @@
         "first_name": "James",
         "last_name": "Bond",
         "address": "30 Wellington Square",
-        "birthdate": "11/11/1920",
+        "birthdate": "11-11-1920",
         "flights":
             [
                 {
@@ -80,7 +100,7 @@
         "first_name": "Jacques",
         "last_name": "Cousteau",
         "address": "62, rue des Archives",
-        "birthdate": "06/11/1910",
+        "birthdate": "06-11-1910",
         "flights":
             [
                 {

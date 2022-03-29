@@ -1,6 +1,10 @@
 import java.io.FileWriter;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.time.*;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Date;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
@@ -9,6 +13,28 @@ import org.json.simple.JSONObject;
  */
 public class DataWriter extends DataConstants {
     
+    /**
+     * COnverts a Date to a String
+     * @param date - The date to be converted
+     * @return - String representation of date
+     */
+    public static String toString(Date date) {
+
+        SimpleDateFormat dateFormatter = new SimpleDateFormat("MM-dd-yyyy");
+
+        return dateFormatter.format(date);
+    }
+
+    /**
+     * Converts a LocalTime to a String
+     * @param time - The LocalTime to be converted
+     * @return - String representation of time
+     */
+    public static String toString(LocalTime time) {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm");
+        return time.format(formatter);
+    }
+
     // Saves users to users.json
     public static void saveUsers() {
         Users users = Users.getInstance();
@@ -37,24 +63,29 @@ public class DataWriter extends DataConstants {
         userDetails.put(UNAME, user.getUsername());
         userDetails.put(EMAIL, user.getEmail());
         userDetails.put(ADDRESS, user.getAddress());
-        userDetails.put(BIRTH, user.getBirthDate());
+        userDetails.put(BIRTH, toString(user.getBirthDate()));
 
         ArrayList<Passport> passports = user.getFriends();
         JSONArray JSONPassports = new JSONArray();
         JSONObject JSONPassport = new JSONObject();
 
         for (Passport p : passports) {
+            System.out.println(p);
             JSONPassport.put(PASS, p.getUUID());
             JSONPassport.put(FLIGHTS, p.getFlightID());
             JSONPassport.put(SEAT, p.getSeat());
         }
+
+        JSONPassports.add(JSONPassport);
 
         userDetails.put(FRIENDS, JSONPassports);
 
         return userDetails;
     }
 
-    // Saves flights to flights.json
+    /**
+     * Writes flight data to flights.json
+     */
     public static void saveFlights() {
         Flights flights = Flights.getInstance();
         ArrayList<Flight> flightList = flights.getAllFlights();
@@ -64,7 +95,7 @@ public class DataWriter extends DataConstants {
             JSONFlights.add(getFlightJSON(flightList.get(i)));
         }
 
-        try (FileWriter writer = new FileWriter(TEST)) {
+        try (FileWriter writer = new FileWriter(FLIGHTS_FILE)) {
             writer.write(JSONFlights.toJSONString());
             writer.flush();
             writer.close();
@@ -73,6 +104,11 @@ public class DataWriter extends DataConstants {
         }
     }
 
+    /**
+     * Called by saveFlights() to get flight data
+     * @param flight - The flight, who's data is required
+     * @return - JSONObject representation of flight
+     */
     public static JSONObject getFlightJSON(Flight flight) {
         JSONObject flightDetails = new JSONObject();
 
@@ -82,19 +118,18 @@ public class DataWriter extends DataConstants {
         flightDetails.put(AIRLINE, flight.getAirline());
         flightDetails.put(DEST, flight.getDestination());
         flightDetails.put(DEPART, flight.getDeparture());
-        flightDetails.put(DEP_DATE, flight.getDepDate());
-        flightDetails.put(DEPART_TIME, flight.getDepTime());
-        flightDetails.put(ARRIVAL_TIME, flight.getArrvTime());
+        flightDetails.put(DEP_DATE, toString(flight.getDepDate()));
+        flightDetails.put(DEPART_TIME, toString(flight.getDepTime()));
+        flightDetails.put(ARRIVAL_TIME, toString(flight.getArrvTime()));
 
         ArrayList<String> seats = flight.getSeats();
         JSONArray JSONSeats = new JSONArray();
-        JSONObject JSONSeat = new JSONObject();
 
         for (String s : seats) {
-            JSONSeat.put(SEATS, s);
+            JSONSeats.add(s);
         }
 
-        flightDetails.put(SEATS, JSONSeat);
+        flightDetails.put(SEATS, JSONSeats);
 
         return flightDetails;
     }

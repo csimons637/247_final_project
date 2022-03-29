@@ -66,12 +66,11 @@ abstract class User {
         return this.address;
     }
 
-    public String getBirthDate() {
-        return this.birthdate.toString();
+    public Date getBirthDate() {
+        return this.birthdate;
     }
 
-    public ArrayList getFriends() {
-        // This feels wrong, ask Portia
+    public ArrayList<Passport> getFriends() {
         return this.friends;
     }
 }
