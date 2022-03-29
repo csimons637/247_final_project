@@ -37,6 +37,20 @@ public Passport (String firstName, String lastName, String address, Date birthDa
     passportInfo = new ArrayList<>();
 }
 
+public String toString(){
+    String FName = this.firstName.toString();
+    String LName = this.lastName.toString();
+    String addy = this.address.toString();
+    String birth = this.birthDate.toString();
+
+    String output = " First Name: " + FName;
+    output += "\nLast Name: " + LName;
+    output += "\nAddress: " + addy;
+    output += "\nBirthdate: " + birth;
+
+    return output;
+}
+
 public UUID getUUID(){
     return this.passportID;
 }
