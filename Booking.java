@@ -40,4 +40,12 @@ public class Booking {
     public static String editBooking() {
         return null;
     }
+
+    public static Booking getInstance() {
+        return null;
+    }
+
+    public ArrayList<Booking> getBooking() {
+        return null;
+    }
 }
