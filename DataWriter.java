@@ -15,10 +15,12 @@ public class DataWriter extends DataConstants {
         ArrayList<User> userList = users.getAllUsers();
         JSONArray JSONUsers = new JSONArray();
 
+        // Creates objects of JSON 
         for (int i = 0; i < userList.size(); i++) {
             JSONUsers.add(getUserJSON(userList.get(i)));
         }
 
+        // Writes the JSON file
         try (FileWriter writer = new FileWriter(TEST)) {
             writer.write(JSONUsers.toJSONString());
             writer.flush();
@@ -63,7 +65,7 @@ public class DataWriter extends DataConstants {
         for (int i = 0; i < flightList.size(); i++) {
             JSONFlights.add(getFlightJSON(flightList.get(i)));
         }
-
+        
         try (FileWriter writer = new FileWriter(TEST)) {
             writer.write(JSONFlights.toJSONString());
             writer.flush();
@@ -100,11 +102,29 @@ public class DataWriter extends DataConstants {
     }
 
     // Save bookings to bookings.json
-    public static void saveBookings(Booking booking) {
+    public static void saveBookings() {
+        Booking booking = Booking.getInstance();
+        ArrayList<Booking> bookingList = booking.getBooking();
+        JSONArray JSONBookings = new JSONArray();
+        
+        for (int i = 0; i < bookingList.size(); i++) {
+            JSONBookings.add(getBookingJSON(bookingList.get(i)));
+        }
+
+        try (FileWriter writer = new FileWriter(TEST)) {
+            writer.write(JSONBookings.toJSONString());
+            writer.flush();
+            writer.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
     }
 
-    public static JSONObject getBookingJSON() {
+    public static JSONObject getBookingJSON(Booking booking) {
         JSONObject bookingDetails = new JSONObject();
+
+        
 
         return bookingDetails;
     }
