@@ -1,10 +1,15 @@
 public class FlightBookingFacade {
+    private static FlightBookingFacade flightBookings;
     private Flight flights;
     private Hotel hotels;
     
-    public FlightBookingFacade(Flight flights, Hotel hotels){
-        this.flights = flights;
-        this.hotels = hotels;
+    private FlightBookingFacade() {}
+
+    public static FlightBookingFacade getInstance() {
+        if(flightBookings == null) {
+            flightBookings = new FlightBookingFacade();
+        }
+        return flightBookings;
     }
 
     private void searchHotel(){
