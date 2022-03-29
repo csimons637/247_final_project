@@ -47,4 +47,16 @@ public class Hotel {
     public String getName() {
         return this.name;
     }
+
+    public boolean getPool() {
+        return this.hasPool;
+    }
+
+    public boolean getGym() {
+        return this.hasGym;
+    }
+
+    public ArrayList<Room> getRooms() {
+        return this.rooms;
+    }
 }

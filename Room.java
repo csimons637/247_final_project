@@ -21,4 +21,8 @@ public class Room {
     public String getType() {
         return this.roomType;
     }
+
+    public ArrayList<Date> getAvail() {
+        return this.availabilities;
+    }
 }
