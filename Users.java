@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.UUID;
 
 public class Users {
@@ -17,12 +16,10 @@ public class Users {
         return user;
     }
 
-    public void addUser(String firstName, String lastName, String username, String address, Date birthdate, String email){
-        User myuser = new User(firstName, lastName, username, address, birthdate, email);
-        users.add(myuser);
-    }
-
     public boolean haveUser(String keyword){
+        for (User user : users) {
+            
+        }
         return true;
     }
 
