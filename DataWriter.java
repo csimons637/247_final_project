@@ -112,7 +112,7 @@ public class DataWriter extends DataConstants {
 
     /**
      * Called by saveFlights() to get Flight data
-     * @param flight - The Flight, who's data is needed
+     * @param flight - The Flight who's data is needed
      * @return - JSONObject representation of flight
      */
     public static JSONObject getFlightJSON(Flight flight) {
@@ -168,7 +168,9 @@ public class DataWriter extends DataConstants {
         return bookingDetails;
     }
 
-    // Save hotels to hotels.json
+    /**
+     * Writes hotel date to hotels.json
+     */
     public static void saveHotels() {
         Hotels hotels = Hotels.getInstance();
         ArrayList<Hotel> hotelList = hotels.getAllHotels();
@@ -187,6 +189,11 @@ public class DataWriter extends DataConstants {
         }
     }
 
+    /**
+     * Called by saveHotels() to get Hotel data
+     * @param hotel - The Hotel who's data is needed
+     * @return - JSONObject representation of hotel
+     */
     public static JSONObject getHotelJSON(Hotel hotel) {
         JSONObject hotelDetails = new JSONObject();
 
@@ -217,10 +224,10 @@ public class DataWriter extends DataConstants {
 
     // Repeat above for flights, hotels, etc.
 
-    public static void main(String args[]) {
-        saveUsers();
-        saveFlights();
-        saveHotels();
-        // saveBookings();
-    }
+    // public static void main(String args[]) {
+    //     saveUsers();
+    //     saveFlights();
+    //     saveHotels();
+    //     // saveBookings();
+    // }
 }
