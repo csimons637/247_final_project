@@ -48,5 +48,8 @@ public class DataConstants {
     protected static final String HOTEL = "hotel_id";
     protected static final String ADDL_PPL = "assoc_people";
     // Test Constants
-    protected static final String TEST = "test.json";
+    protected static final String USER_TEST = "user_test.json";
+    protected static final String FLIGHT_TEST = "flight_test.json";
+    protected static final String HOTEL_TEST = "hotel_test.json";
+    protected static final String BOOKING_TEST = "booking_test.json";
 }
