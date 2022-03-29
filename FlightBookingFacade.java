@@ -2,8 +2,10 @@ import java.util.Date;
 import java.util.Scanner;
 
 public class FlightBookingFacade {
+    private static FlightBookingFacade flightBookings;
     private Flight flights;
     private Hotel hotels;
+<<<<<<< HEAD
     private User user;
     private Scanner reader;
 
@@ -11,6 +13,16 @@ public class FlightBookingFacade {
         this.flights = flights;
         this.hotels = hotels;
         this.user = user;
+=======
+    
+    private FlightBookingFacade() {}
+
+    public static FlightBookingFacade getInstance() {
+        if(flightBookings == null) {
+            flightBookings = new FlightBookingFacade();
+        }
+        return flightBookings;
+>>>>>>> Tipton
     }
 
     private void searchHotel(){
