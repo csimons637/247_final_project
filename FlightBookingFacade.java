@@ -1,17 +1,23 @@
+import java.util.Date;
+import java.util.Scanner;
+
 public class FlightBookingFacade {
     private Flight flights;
     private Hotel hotels;
-    
-    public FlightBookingFacade(Flight flights, Hotel hotels){
+    private User user;
+    private Scanner reader;
+
+    public FlightBookingFacade(Flight flights, Hotel hotels, User user){
         this.flights = flights;
         this.hotels = hotels;
+        this.user = user;
     }
 
     private void searchHotel(){
 
     }
 
-    private void searchAirport(){
+    private void searchFlight(){
 
     }
     
@@ -32,10 +38,11 @@ public class FlightBookingFacade {
     }
 
     private void login(){
-
+        
     }
 
-    private void createAccount(){
-        
+    private void createAccount(String firstName, String lastName, String username, String address, Date birthdate, String email){
+        Users.getInstance().addUser(firstName, lastName, username, address, birthdate, email);
+
     }
 }
