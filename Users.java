@@ -10,7 +10,7 @@ public class Users {
     }
 
     public static Users getInstance() {
-        if(user == null) {
+        if (user == null) {
             user = new Users();
         }
         return user;

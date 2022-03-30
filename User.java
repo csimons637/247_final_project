@@ -66,8 +66,8 @@ abstract class User {
         return address;
     }
 
-    public String getBirthDate() {
-        return this.birthdate.toString();
+    public Date getBirthDate() {
+        return this.birthdate;
     }
 
     public ArrayList getFriends() {

@@ -5,6 +5,8 @@ import java.time.*;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.UUID;
+
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
@@ -142,8 +144,8 @@ public class DataWriter extends DataConstants {
 
     // Save bookings to bookings.json
     public static void saveBookings() {
-        Booking booking = Booking.getInstance();
-        ArrayList<Booking> bookingList = booking.getBooking();
+        Bookings booking = Bookings.getInstance();
+        ArrayList<Booking> bookingList = booking.getAllBookings();
         JSONArray JSONBookings = new JSONArray();
         
         for (int i = 0; i < bookingList.size(); i++) {
@@ -163,7 +165,18 @@ public class DataWriter extends DataConstants {
     public static JSONObject getBookingJSON(Booking booking) {
         JSONObject bookingDetails = new JSONObject();
 
-        
+        bookingDetails.put(BOOK, booking.getBookID().toString());
+        bookingDetails.put(OWN, booking.getOwner().toString());
+        bookingDetails.put(HOTEL_ID, booking.getHotelID().toString());
+
+        ArrayList<UUID> friendIDs = booking.getFriends();
+        JSONArray JSONFriends = new JSONArray();
+
+        for (UUID id : friendIDs) {
+            JSONFriends.add(id.toString());
+        }
+
+        bookingDetails.put(ADDL_PPL, JSONFriends);        
 
         return bookingDetails;
     }
@@ -222,12 +235,10 @@ public class DataWriter extends DataConstants {
         return hotelDetails;
     }
 
-    // Repeat above for flights, hotels, etc.
-
-    // public static void main(String args[]) {
-    //     saveUsers();
-    //     saveFlights();
-    //     saveHotels();
-    //     // saveBookings();
-    // }
+    public static void main(String args[]) {
+        saveUsers();
+        saveFlights();
+        saveHotels();
+        saveBookings();
+    }
 }
