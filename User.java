@@ -70,7 +70,7 @@ abstract class User {
         return this.birthdate;
     }
 
-    public ArrayList getFriends() {
+    public ArrayList<Passport> getFriends() {
         // This feels wrong, ask Portia
         return this.friends;
     }
