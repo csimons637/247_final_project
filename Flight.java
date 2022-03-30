@@ -73,8 +73,8 @@ public class Flight {
         return output;
     }
 
-    public boolean isMatch(String depart, String dest, Date date){
-        if (Flights.getInstance().searchFlights(dest, dest, date).size() == 0 ) {
+    public boolean isMatch(String source, String dest, Date date){
+        if (Flights.getInstance().searchFlights(source, dest, date).size() == 0 ) {
             return false; 
         } else {
             return true;

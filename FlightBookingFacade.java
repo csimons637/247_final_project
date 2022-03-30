@@ -15,20 +15,20 @@ public class FlightBookingFacade {
         return flightBookings;
     }
 
-    private void searchHotel(){
-
+    private void searchHotel(String dest, String roomType, String ammeneties){
+        Hotels.getInstance().searchHotels(dest, roomType, ammeneties);
     }
 
-    private void searchFlight(String depart, String dest, Date date){
-        Flights.getInstance().searchFlights(depart, dest, date);
+    private void searchFlight(String source, String dest, Date date){
+        Flights.getInstance().searchFlights(source, dest, date);
     }
     
-    private void bookFlight(){
-
+    private void bookFlight(String source, String dest, Date date){
+        searchFlight(source, dest, date);
     }
 
-    private void bookHotel(){
-
+    private void bookHotel(String dest, String roomType, String ammeneties){
+        searchHotel(dest, roomType, ammeneties);
     }
 
     private void checkReservation(){
