@@ -235,11 +235,4 @@ public class DataWriter extends DataConstants {
 
         return hotelDetails;
     }
-
-    public static void main(String args[]) {
-        saveUsers();
-        saveFlights();
-        saveHotels();
-        saveBookings();
-    }
 }
