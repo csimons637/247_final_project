@@ -1,13 +1,21 @@
 import java.util.ArrayList;
 
 public class Bookings {
+    private static Bookings booking;
     private ArrayList<Booking> bookings;
 
     public ArrayList<Booking> getAllBookings(){
-        return null;
+        return DataLoader.getAllBookings();
     }
 
-    public Booking getBooking(String keyword) {
+    public static Bookings getInstance() {
+        if (booking == null) {
+            booking = new Bookings();
+        }
+        return booking;
+    }
+
+    public Bookings getBooking(String keyword) {
         return null;
     }
 

@@ -1,7 +1,27 @@
 [
     {
-        "passport_id": "8306c0a6-8450-4813-b8f3-08c9e17d84b1",
-        "first_name": "Petter",
+        "passport_id": "025452b3-6710-4519-ba68-0081990be5ed",
+        "first_name": "J. Jonah",
+        "last_name": "Jameson",
+        "address": "1223 Broadway",
+        "birthdate": "05-15-1975",
+        "flights":
+            [
+                {
+                    "flight_id": "70c6591e-8616-4b7e-b26b-e61625ac9a5a"
+                }
+            ],
+        "seats":
+            [
+                {
+                    "seat": "1A"
+                }
+            ]
+
+    },
+    {
+        "passport_id": "9d7586db-5742-41b9-800b-ceb6939b1158",
+        "first_name": "Peter",
         "last_name": "Parker",
         "address": "123 Road Street",
         "birthdate": "12-12-1927",
@@ -14,103 +34,7 @@
         "seats":
             [
                 {
-                    "seat": "3B"
-                }
-            ]
-
-    },
-    {
-        "passport_id": "5f4e888d-a13c-4ca9-bc34-e44a97b45238",
-        "first_name": "Ava",
-        "last_name": "DuPre",
-        "address": "123 Road Street",
-        "birthdate": "12-12-1927",
-        "flights":
-            [
-                {
-                    "flight_id": "70c6591e-8616-4b7e-b26b-e61625ac9a5a"
-                }
-            ],
-        "seats":
-            [
-                {
-                    "seat": "3A"
-                }
-            ]
-    },
-    {
-        "passport_id": "95d20048-059e-44c1-a56d-0a057876e7e0",
-        "first_name": "Breanna",
-        "last_name": "Compton",
-        "address": "54321 West Main Street",
-        "birthdate": "12-13-2007",
-        "flights":
-            [
-                {
-                    "flight_id": "70c6591e-8616-4b7e-b26b-e61625ac9a5a"
-                }
-            ],
-        "seats":
-            [
-                {
-                    "seat": "5C"
-                }
-            ]
-    },
-    {
-        "passport_id": "2c73dfb4-ea1d-4c3e-abd4-aa8ed444695f",
-        "first_name": "Steven",
-        "last_name": "Jobs",
-        "address": "1 Infinite Loop",
-        "birthdate": "02-24-1955",
-        "flights":
-            [
-                {
-                    "flight_id": "987c3091-bd31-4f64-aec9-447383c80d72"
-                }
-            ],
-        "seats":
-            [
-                {
-                    "seat": "3B"
-                }
-            ]
-    },
-    {
-        "passport_id": "f38bd680-2ea5-4297-83ce-f2ae23d4950c",
-        "first_name": "James",
-        "last_name": "Bond",
-        "address": "30 Wellington Square",
-        "birthdate": "11-11-1920",
-        "flights":
-            [
-                {
-                    "flight_id": "751172e4-df77-4459-ac40-b023f0fae981"
-                }
-            ],
-        "seats":
-            [
-                {
-                    "seat": "1D"
-                }
-            ]
-    },
-    {
-        "passport_id": "dde8a3c2-49a5-4b47-ad0f-196110997797",
-        "first_name": "Jacques",
-        "last_name": "Cousteau",
-        "address": "62, rue des Archives",
-        "birthdate": "06-11-1910",
-        "flights":
-            [
-                {
-                    "flight_id": "f9ec457a-8282-4ce9-85e0-e8f354355021"
-                }
-            ],
-        "seats":
-            [
-                {
-                    "seat": "4A"
+                    "seat": "1B"
                 }
             ]
     }

@@ -23,16 +23,6 @@ abstract class User {
         this.userID = id;
     }
 
-    public User(String firstName, String lastName, String username, String address, Date birthdate, String email) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.username = username;
-        this.address = address;
-        this.email = email;
-        this.birthdate = birthdate;
-        this.userID = UUID.randomUUID();
-    }
-
     public String toString() {
         String output = "User ID: " + this.userID.toString() + '\n';
         output += "Name:" + this.firstName + " ";
@@ -44,47 +34,44 @@ abstract class User {
         return output;
     }
 
-    public void setFirstName() {
-
+    public void setFirstName(String firstName) {
+        this.firstName =firstName;
     }
 
-    public void setLastName() {
-
-    }
-
-    public void setUserName() {
-
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
     public UUID getUUID() {
-        return this.userID;
+        return userID;
     }
 
     public String getFirstName() {
-        return this.firstName;
+        return firstName;
     }
 
     public String getLastName() {
-        return this.lastName;
+        return lastName;
     }
 
     public String getUsername() {
-        return this.username;
+        return username;
     }
 
     public String getEmail() {
-        return this.email;
+        return email;
     }
 
     public String getAddress() {
-        return this.address;
+        return address;
     }
 
     public Date getBirthDate() {
         return this.birthdate;
     }
 
-    public ArrayList<Passport> getFriends() {
+    public ArrayList getFriends() {
+        // This feels wrong, ask Portia
         return this.friends;
     }
 }

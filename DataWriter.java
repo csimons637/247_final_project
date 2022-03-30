@@ -5,6 +5,8 @@ import java.time.*;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.UUID;
+
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
@@ -14,7 +16,7 @@ import org.json.simple.JSONObject;
 public class DataWriter extends DataConstants {
     
     /**
-     * COnverts a Date to a String
+     * Converts a Date to a String
      * @param date - The date to be converted
      * @return - String representation of date
      */
@@ -35,19 +37,19 @@ public class DataWriter extends DataConstants {
         return time.format(formatter);
     }
 
-    // Saves users to users.json
+    /**
+     * Writes user data to users.json
+     */
     public static void saveUsers() {
         Users users = Users.getInstance();
         ArrayList<User> userList = users.getAllUsers();
         JSONArray JSONUsers = new JSONArray();
 
-        // Creates objects of JSON 
         for (int i = 0; i < userList.size(); i++) {
             JSONUsers.add(getUserJSON(userList.get(i)));
         }
 
-        // Writes the JSON file
-        try (FileWriter writer = new FileWriter(TEST)) {
+        try (FileWriter writer = new FileWriter(USER_TEST)) {
             writer.write(JSONUsers.toJSONString());
             writer.flush();
             writer.close();
@@ -56,6 +58,11 @@ public class DataWriter extends DataConstants {
         }
     }
 
+    /**
+     * Called by saveUsers() to get User data
+     * @param user - The User who's data is needed
+     * @return - JSONObject representation of user
+     */
     public static JSONObject getUserJSON(User user) {
         JSONObject userDetails = new JSONObject();
 
@@ -72,15 +79,14 @@ public class DataWriter extends DataConstants {
         JSONObject JSONPassport = new JSONObject();
 
         for (Passport p : passports) {
-            System.out.println(p);
-            JSONPassport.put(PASS, p.getUUID());
-            JSONPassport.put(FLIGHTS, p.getFlightID());
+            JSONPassport.put(PASS, p.getUUID().toString());
+            JSONPassport.put(FLIGHTS, p.getFlightID().toString());
             JSONPassport.put(SEAT, p.getSeat());
+
+            JSONPassports.add(JSONPassport);
+            userDetails.put(FRIENDS, JSONPassports);
+    
         }
-
-        JSONPassports.add(JSONPassport);
-
-        userDetails.put(FRIENDS, JSONPassports);
 
         return userDetails;
     }
@@ -97,7 +103,7 @@ public class DataWriter extends DataConstants {
             JSONFlights.add(getFlightJSON(flightList.get(i)));
         }
 
-        try (FileWriter writer = new FileWriter(FLIGHTS_FILE)) {
+        try (FileWriter writer = new FileWriter(FLIGHT_TEST)) {
             writer.write(JSONFlights.toJSONString());
             writer.flush();
             writer.close();
@@ -107,8 +113,8 @@ public class DataWriter extends DataConstants {
     }
 
     /**
-     * Called by saveFlights() to get flight data
-     * @param flight - The flight, who's data is required
+     * Called by saveFlights() to get Flight data
+     * @param flight - The Flight who's data is needed
      * @return - JSONObject representation of flight
      */
     public static JSONObject getFlightJSON(Flight flight) {
@@ -138,15 +144,15 @@ public class DataWriter extends DataConstants {
 
     // Save bookings to bookings.json
     public static void saveBookings() {
-        Booking booking = Booking.getInstance();
-        ArrayList<Booking> bookingList = booking.getBooking();
+        Bookings booking = Bookings.getInstance();
+        ArrayList<Booking> bookingList = booking.getAllBookings();
         JSONArray JSONBookings = new JSONArray();
         
         for (int i = 0; i < bookingList.size(); i++) {
             JSONBookings.add(getBookingJSON(bookingList.get(i)));
         }
 
-        try (FileWriter writer = new FileWriter(TEST)) {
+        try (FileWriter writer = new FileWriter(BOOKING_TEST)) {
             writer.write(JSONBookings.toJSONString());
             writer.flush();
             writer.close();
@@ -159,25 +165,80 @@ public class DataWriter extends DataConstants {
     public static JSONObject getBookingJSON(Booking booking) {
         JSONObject bookingDetails = new JSONObject();
 
-        
+        bookingDetails.put(BOOK, booking.getBookID().toString());
+        bookingDetails.put(OWN, booking.getOwner().toString());
+        bookingDetails.put(HOTEL_ID, booking.getHotelID().toString());
+
+        ArrayList<UUID> friendIDs = booking.getFriends();
+        JSONArray JSONFriends = new JSONArray();
+
+        for (UUID id : friendIDs) {
+            JSONFriends.add(id.toString());
+        }
+
+        bookingDetails.put(ADDL_PPL, JSONFriends);        
 
         return bookingDetails;
     }
 
-    // Save hotels to hotels.json
+    /**
+     * Writes hotel date to hotels.json
+     */
     public static void saveHotels() {
+        Hotels hotels = Hotels.getInstance();
+        ArrayList<Hotel> hotelList = hotels.getAllHotels();
+        JSONArray JSONHotels = new JSONArray();
 
+        for (int i = 0; i < hotelList.size(); i++) {
+            JSONHotels.add(getHotelJSON(hotelList.get(i)));
+        }
+
+        try (FileWriter writer = new FileWriter(HOTEL_TEST)) {
+            writer.write(JSONHotels.toJSONString());
+            writer.flush();
+            writer.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
+    /**
+     * Called by saveHotels() to get Hotel data
+     * @param hotel - The Hotel who's data is needed
+     * @return - JSONObject representation of hotel
+     */
     public static JSONObject getHotelJSON(Hotel hotel) {
         JSONObject hotelDetails = new JSONObject();
+
+        hotelDetails.put(HOTEL_ID, hotel.getUUID().toString());
+        hotelDetails.put(HOTEL_NAME, hotel.getName());
+        hotelDetails.put(POOL, hotel.getPool());
+        hotelDetails.put(GYM, hotel.getGym());
+
+        ArrayList<Room> rooms = hotel.getRooms();
+        JSONArray JSONRooms = new JSONArray();
+        JSONArray JSONRoomAvail = new JSONArray();
+        JSONObject JSONRoom = new JSONObject();
+
+        for (Room r : rooms) {
+            ArrayList<Date> avail = r.getAvail();
+            for (Date d : avail) {
+                JSONRoomAvail.add(toString(d));
+            }
+            JSONRoom.put(ROOM_NUM, r.getNum());
+            JSONRoom.put(ROOM_TYPE, r.getType());
+            JSONRoom.put(ROOM_AVAIL, JSONRoomAvail);
+            JSONRooms.add(JSONRoom);
+            hotelDetails.put(ROOMS, JSONRooms);
+        }
 
         return hotelDetails;
     }
 
-    // Repeat above for flights, hotels, etc.
-
     public static void main(String args[]) {
         saveUsers();
+        saveFlights();
+        saveHotels();
+        saveBookings();
     }
 }

@@ -7,14 +7,14 @@ import java.util.Scanner;
 public class FlightBookingUI {
     private static final String STARTUP_MESSAGE = "Welcome Guest!";
     private String[] choices = {"Book a flight", "Book a hotel", "Check any existing reservations",
-                                "Change/Cancel any existing reservations", "Login", "Create an account",
+                                "Change/Cancel any existing reservations", "Create an account",
                                 "Quit"};
     private Scanner scanner;
     private FlightBookingFacade flightbooking;
 
     FlightBookingUI(){
         scanner = new Scanner(System.in);
-        flightbooking = new FlightBookingFacade();
+        flightbooking = FlightBookingFacade.getInstance();
     }
 
     private void run() {
@@ -46,9 +46,6 @@ public class FlightBookingUI {
                     changeReservation();
                     break;
                 case(4):
-                    login();
-                    break;
-                case(5):
                     createAccount();
                     break;        
             }
@@ -87,13 +84,23 @@ public class FlightBookingUI {
         System.out.println("\nWhere are you heading?");
         String dest = scanner.nextLine();
         //ask what day
-        System.out.println("\nWhat day would you like to leave?(mm--dd--yyyy)");
-        String date = scanner.nextLine();
-        if(parseDate(date) == date) {
-            new SimpleDateFormat("mm-dd-yyyy").parse(date);
-        }
 
+        Date date = null;
+
+        while(true) {
+            System.out.println("\nWhat day would you like to leave?(MM-dd-yyyy)");
+            String dateString = scanner.nextLine();
+            date = parseDate(dateString);
+
+            if(date != null){
+                break;
+            }
+        }
         ArrayList<Flight> flights =  FlightBookingFacade.getInstance().searchFlight(source, dest, date);
+
+        for(Flight flight: flights) {
+            System.out.println(flight);
+        }
     }
 
 
@@ -110,20 +117,39 @@ public class FlightBookingUI {
         String ammeneties = scanner.nextLine();
 
         ArrayList<Hotel> hotels = FlightBookingFacade.getInstance().searchHotel(dest, roomType, ammeneties);
+
+        for(Hotel hotel: hotels) {
+            System.out.println(hotel);
+        }
     }
 
     private void checkReservation() {
         System.out.println("\n------What is your user name?------");
         String userName = scanner.nextLine();
 
-        if(!userName) System.out.println("User name not found");
+        if(!FlightBookingFacade.getInstance().hasUser(userName)) {
+            System.out.println("User name not found");
+        }
 
+        ArrayList<Booking> bookings = FlightBookingFacade.getInstance().checkReservation(userName);
+
+        for(Booking booking: bookings){
+            System.out.println(booking);
+        }
 
     }
 
     private void changeReservation() {
         System.out.println("\n-----What is your user name?------");
         String userName = scanner.nextLine();
+
+        if(!FlightBookingFacade.getInstance().hasUser(userName)) {
+            System.out.println("User name not found");
+        }
+
+        System.out.println("\nWould you like to change the date or cancel?");
+
+
 
     }
 
@@ -140,7 +166,8 @@ public class FlightBookingUI {
         String userName = scanner.nextLine();
 
         System.out.println("\nPlease enter your date of birth (Any format)");
-        String birthdate = scanner.nextLine();
+        String birthday = scanner.nextLine();
+        Date birthdate = parseDate(birthday);
 
         System.out.println("\nPlease enter your address");
         String address = scanner.nextLine();
@@ -148,14 +175,14 @@ public class FlightBookingUI {
         System.out.println("\nPlease enter your email");
         String email = scanner.nextLine();
 
-        ArrayList<Users> users = FlightBookingFacade.getInstance().createAccount(firstName,lastName,userName,address,birthdate,email);
+        User currentUser = FlightBookingFacade.getInstance().createAccount(firstName,lastName,userName,address,birthdate,email);
     }
 
     public static Date parseDate(String date) {
         try {
-            return new SimpleDateFormat("MM/dd/yyyy").parse(date);
+            return new SimpleDateFormat("MM-dd-yyyy").parse(date);
         } catch (ParseException e) {
-            e.printStackTrace();
+            System.out.println("Did not enter the correct format");
             return null;
         }
     }

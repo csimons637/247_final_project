@@ -40,4 +40,28 @@ public class Booking {
     public static String editBooking() {
         return null;
     }
+
+    public static Booking getInstance() {
+        return null;
+    }
+
+    public ArrayList<Booking> getBooking() {
+        return null;
+    }
+
+    public UUID getOwner() {
+        return this.ownerID;
+    }
+
+    public UUID getBookID() {
+        return this.bookingID;
+    }
+
+    public UUID getHotelID() {
+        return this.hotel;
+    }
+
+    public ArrayList<UUID> getFriends() {
+        return this.friends;
+    }
 }
