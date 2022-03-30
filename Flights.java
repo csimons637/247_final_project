@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.UUID;
 
 public class Flights {
@@ -30,6 +31,16 @@ public class Flights {
                 return flight;
             }
         }
+        return null;
+    }
+
+    public ArrayList<Flight> searchFlights(String depart, String dest, Date date) {
+        ArrayList<Flight> flights = new ArrayList<Flight>();
+            for(Flight flight : flightsList) {
+                if (flight.getDeparture() == depart & flight.getDestination() == dest & flight.getDepDate() == date.toString()) {
+                    return flights;
+                }
+            }
         return null;
     }
 }

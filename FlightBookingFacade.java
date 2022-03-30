@@ -17,8 +17,8 @@ public class FlightBookingFacade {
 
     }
 
-    private void searchFlight(){
-
+    private void searchFlight(String depart, String dest, Date date){
+        Flights.getInstance().searchFlights(depart, dest, date);
     }
     
     private void bookFlight(){
