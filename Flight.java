@@ -73,6 +73,14 @@ public class Flight {
         return output;
     }
 
+    public boolean isMatch(String depart, String dest, Date date){
+        if (Flights.getInstance().searchFlights(depart, dest, date) == null) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
     public String getNum() {
         return this.flightNumber;
     }
