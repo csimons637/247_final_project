@@ -6,10 +6,10 @@
         "assoc_people":
             [
                 {
-                    "friend_id": "5f4e888d-a13c-4ca9-bc34-e44a97b45238"
+                    "passport_id": "5f4e888d-a13c-4ca9-bc34-e44a97b45238"
                 },
                 {
-                    "friend_id": "dde8a3c2-49a5-4b47-ad0f-196110997797"
+                    "passport_id": "dde8a3c2-49a5-4b47-ad0f-196110997797"
                 }
             ]
     }
