@@ -37,10 +37,10 @@ public class Flights {
     public ArrayList<Flight> searchFlights(String depart, String dest, Date date) {
         ArrayList<Flight> flights = new ArrayList<Flight>();
             for(Flight flight : flightsList) {
-                if (flight.getDeparture() == depart & flight.getDestination() == dest & flight.getDepDate() == date.toString()) {
-                    return flights;
+                if (flight.getDeparture().equals(depart) & flight.getDestination().equals(dest) & flight.getDepDate() == date) {
+                    flights.add(flight);
                 }
             }
-        return null;
+        return flights;
     }
 }
