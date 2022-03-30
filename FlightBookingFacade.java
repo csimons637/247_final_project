@@ -43,7 +43,7 @@ public class FlightBookingFacade {
         
     }
 
-    private User createAccount(String firstName, String lastName, String username, String address, Date birthdate, String email){
+    public User createAccount(String firstName, String lastName, String username, String address, Date birthdate, String email){
         Users.getInstance().addUser(firstName, lastName, username, address, birthdate, email);
     }
 }

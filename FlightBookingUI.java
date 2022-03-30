@@ -14,7 +14,7 @@ public class FlightBookingUI {
 
     FlightBookingUI(){
         scanner = new Scanner(System.in);
-        flightbooking = new FlightBookingFacade();
+        flightbooking = FlightBookingFacade.getInstance();
     }
 
     private void run() {
@@ -143,6 +143,14 @@ public class FlightBookingUI {
         System.out.println("\n-----What is your user name?------");
         String userName = scanner.nextLine();
 
+        if(!FlightBookingFacade.getInstance().hasUser(userName)) {
+            System.out.println("User name not found");
+        }
+
+        System.out.println("\nWould you like to change the date or cancel?");
+
+
+
     }
 
     private void createAccount() {
@@ -158,7 +166,8 @@ public class FlightBookingUI {
         String userName = scanner.nextLine();
 
         System.out.println("\nPlease enter your date of birth (Any format)");
-        Date birthdate = new SimpleDateFormat("MM-dd-yyyy").parse(scanner.nextLine());
+        String birthday = scanner.nextLine();
+        Date birthdate = parseDate(birthday);
 
         System.out.println("\nPlease enter your address");
         String address = scanner.nextLine();
@@ -166,7 +175,7 @@ public class FlightBookingUI {
         System.out.println("\nPlease enter your email");
         String email = scanner.nextLine();
 
-        ArrayList<Users> users = FlightBookingFacade.getInstance().createAccount(firstName,lastName,userName,address,birthdate,email);
+        User currentUser = FlightBookingFacade.getInstance().createAccount(firstName,lastName,userName,address,birthdate,email);
     }
 
     public static Date parseDate(String date) {
