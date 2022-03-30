@@ -5,15 +5,6 @@ public class FlightBookingFacade {
     private static FlightBookingFacade flightBookings;
     private Flight flights;
     private Hotel hotels;
-<<<<<<< HEAD
-    private User user;
-    private Scanner reader;
-
-    public FlightBookingFacade(Flight flights, Hotel hotels, User user){
-        this.flights = flights;
-        this.hotels = hotels;
-        this.user = user;
-=======
     
     private FlightBookingFacade() {}
 
@@ -22,7 +13,6 @@ public class FlightBookingFacade {
             flightBookings = new FlightBookingFacade();
         }
         return flightBookings;
->>>>>>> Tipton
     }
 
     private void searchHotel(){
@@ -53,8 +43,7 @@ public class FlightBookingFacade {
         
     }
 
-    private void createAccount(String firstName, String lastName, String username, String address, Date birthdate, String email){
+    private User createAccount(String firstName, String lastName, String username, String address, Date birthdate, String email){
         Users.getInstance().addUser(firstName, lastName, username, address, birthdate, email);
-
     }
 }
