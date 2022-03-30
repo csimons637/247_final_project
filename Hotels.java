@@ -32,4 +32,14 @@ public class Hotels {
         }
         return null;
     }
+
+    public ArrayList<Hotel> searchHotels(String dest, String roomType, String ammeneties) {
+        ArrayList<Hotel> hotels = new ArrayList<Hotel>();
+            for(Hotel hotel : hotels) {
+                if (hotel.) {
+                    hotels.add(hotel);
+                }
+            }
+        return hotels;
+    }
 }
