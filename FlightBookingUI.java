@@ -14,7 +14,7 @@ public class FlightBookingUI {
 
     FlightBookingUI(){
         scanner = new Scanner(System.in);
-        flightbooking = new FlightBookingFacade();
+        flightbooking = FlightBookingFacade.getInstance();
     }
 
     private void run() {
@@ -30,7 +30,7 @@ public class FlightBookingUI {
                 continue;
             }
 
-            if(commandChoice == choices.length -1) break;
+            if(commandChoice == choices.length - 1) break;
 
             switch(commandChoice) {
                 case(0):
@@ -96,7 +96,7 @@ public class FlightBookingUI {
                 break;
             }
         }
-        ArrayList<Flight> flights =  FlightBookingFacade.getInstance().searchFlight(source, dest, date);
+        ArrayList<Flight> flights = FlightBookingFacade.getInstance().searchFlight(source, dest, date);
 
         for(Flight flight: flights) {
             System.out.println(flight);
@@ -113,10 +113,13 @@ public class FlightBookingUI {
         System.out.println("\nWhat type of room would you like?");
         String roomType = scanner.nextLine();
 
-        System.out.println("\nWould you like the hotel to have a pool/gym?");
-        String ammeneties = scanner.nextLine();
+        System.out.println("\nWould you like the hotel to have a pool");
+        String pool = scanner.nextLine();
 
-        ArrayList<Hotel> hotels = FlightBookingFacade.getInstance().searchHotel(dest, roomType, ammeneties);
+        System.out.println("\nWould you like the hotel to have a gym?");
+        String gym = scanner.nextLine();
+
+       ArrayList<Hotel> hotels = FlightBookingFacade.getInstance().searchHotel(dest, roomType, pool, gym);
 
         for(Hotel hotel: hotels) {
             System.out.println(hotel);
@@ -131,7 +134,7 @@ public class FlightBookingUI {
             System.out.println("User name not found");
         }
 
-        ArrayList<Booking> bookings = FlightBookingFacade.getInstance().checkReservation(userName);
+       ArrayList<Booking> bookings = FlightBookingFacade.getInstance().checkReservation(userName);
 
         for(Booking booking: bookings){
             System.out.println(booking);
@@ -142,6 +145,22 @@ public class FlightBookingUI {
     private void changeReservation() {
         System.out.println("\n-----What is your user name?------");
         String userName = scanner.nextLine();
+
+        if(!FlightBookingFacade.getInstance().hasUser(userName)) {
+            System.out.println("User name not found");
+        }
+
+        System.out.println("\nWould you like to change the date or cancel?");
+
+        String[] reservationChoices = {"Change reservation", "Cancel Reservation"};
+        for(int i = 0; i < reservationChoices.length; i++) {
+            System.out.println((i+1) + " . " +reservationChoices[i]);
+        }
+        System.out.println("\n");
+
+        String choice = scanner.nextLine();
+        int choices = Integer.parseInt(choice) - 1;
+
 
     }
 
@@ -158,7 +177,8 @@ public class FlightBookingUI {
         String userName = scanner.nextLine();
 
         System.out.println("\nPlease enter your date of birth (Any format)");
-        Date birthdate = new SimpleDateFormat("MM-dd-yyyy").parse(scanner.nextLine());
+        String birthday = scanner.nextLine();
+        Date birthdate = parseDate(birthday);
 
         System.out.println("\nPlease enter your address");
         String address = scanner.nextLine();
@@ -166,7 +186,14 @@ public class FlightBookingUI {
         System.out.println("\nPlease enter your email");
         String email = scanner.nextLine();
 
-        ArrayList<Users> users = FlightBookingFacade.getInstance().createAccount(firstName,lastName,userName,address,birthdate,email);
+        User currentUser = FlightBookingFacade.getInstance().createAccount(firstName,lastName,userName,address,birthdate,email);
+        
+        System.out.println("Your account has been created!");
+    }
+
+    public static void main(String[] args) {
+        FlightBookingUI flightBookingUI = new FlightBookingUI();
+        flightBookingUI.run();
     }
 
     public static Date parseDate(String date) {
