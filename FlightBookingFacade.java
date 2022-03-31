@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.Scanner;
 
@@ -5,6 +6,7 @@ public class FlightBookingFacade {
     private static FlightBookingFacade flightBookings;
     private Flight flights;
     private Hotel hotels;
+    private User users;
     
     private FlightBookingFacade() {}
 
@@ -15,35 +17,31 @@ public class FlightBookingFacade {
         return flightBookings;
     }
 
-    private void searchHotel(){
-
+    private ArrayList<Hotel> searchHotel(String dest, String roomType, String room, String gym){
+       return Hotels.getInstance().searchHotels(dest, roomType, room, gym);
     }
 
-    private void searchFlight(String depart, String dest, Date date){
-        Flights.getInstance().searchFlights(depart, dest, date);
+    private ArrayList<Flight> searchFlight(String source, String dest, Date date){
+       return Flights.getInstance().searchFlights(source, dest, date);
     }
     
-    private void bookFlight(){
-
+    public ArrayList<Flight>  bookFlight(String source, String dest, Date date){
+        return searchFlight(source, dest, date);
     }
 
-    private void bookHotel(){
-
+    public ArrayList<Hotel> bookHotel(String dest, String roomType, String pool, String gym){
+        return searchHotel(dest, roomType, pool, gym);
     }
 
     private void checkReservation(){
 
     }
 
-    private void changeReservation(){
-
-    }
-
-    private void login(){
-        
-    }
-
-    private User createAccount(String firstName, String lastName, String username, String address, Date birthdate, String email){
+    public User createAccount(String firstName, String lastName, String username, String address, Date birthdate, String email){
         Users.getInstance().addUser(firstName, lastName, username, address, birthdate, email);
+    }
+
+    public boolean hasUser(String userName) {
+        return hasUser(userName);
     }
 }

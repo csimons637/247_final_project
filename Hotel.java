@@ -4,7 +4,7 @@ import java.util.UUID;
 public class Hotel {
     private ArrayList<Room> rooms = new ArrayList<Room>();
     private String name;
-    private UUID uuid;
+    private UUID uuid; 
     private boolean hasPool;
     private boolean hasGym;
 

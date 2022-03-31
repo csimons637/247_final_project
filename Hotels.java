@@ -32,4 +32,29 @@ public class Hotels {
         }
         return null;
     }
+
+    public ArrayList<Hotel> searchHotels(String dest, String roomType, String pool, String gym) {
+        boolean poolA = true;
+        boolean gymA = true;
+
+        if (pool.equalsIgnoreCase("true")){
+            poolA = true;
+        } else {
+            poolA = false;
+        }
+
+        if (gym.equalsIgnoreCase("true")){
+            gymA = true;
+        } else {
+            gymA = false;
+        }
+
+        ArrayList<Hotel> hotels = new ArrayList<Hotel>();
+            for(Hotel hotel : hotels) {
+                if (hotel.getPool() == poolA && hotel.getGym() ==  gymA) {
+                    hotels.add(hotel);
+                }
+            }
+        return hotels;
+    }
 }
