@@ -51,9 +51,12 @@ public class Hotels {
 
         ArrayList<Hotel> hotels = new ArrayList<Hotel>();
             for(Hotel hotel : hotels) {
-                if (hotel.getPool() == poolA && hotel.getGym() ==  gymA) {
-                    hotels.add(hotel);
-                }
+                ArrayList<Room> rooms = hotel.getRooms();
+                for(Room room : rooms){
+                    if (hotel.getPool() == poolA && hotel.getGym() ==  gymA && room.getType().equalsIgnoreCase(roomType)) {
+                        hotels.add(hotel);
+                    }
+                }    
             }
         return hotels;
     }
