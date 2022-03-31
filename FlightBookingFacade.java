@@ -7,6 +7,7 @@ public class FlightBookingFacade {
     private Flight flights;
     private Hotel hotels;
     private User users;
+    private Booking booking;
     
     private FlightBookingFacade() {}
 
@@ -33,7 +34,8 @@ public class FlightBookingFacade {
         return searchHotel(dest, roomType, pool, gym);
     }
 
-    private void checkReservation(){
+    public ArrayList<Booking> checkReservation(String userName){
+        return Bookings.getInstance(userName);
 
     }
 
