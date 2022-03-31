@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.Scanner;
 
@@ -15,32 +16,24 @@ public class FlightBookingFacade {
         return flightBookings;
     }
 
-    private void searchHotel(String dest, String roomType, String ammeneties){
-        Hotels.getInstance().searchHotels(dest, roomType, ammeneties);
+    private ArrayList<Hotel> searchHotel(String dest, String roomType, String room, String gym){
+       return Hotels.getInstance().searchHotels(dest, roomType, room, gym);
     }
 
-    private void searchFlight(String source, String dest, Date date){
-        Flights.getInstance().searchFlights(source, dest, date);
+    private ArrayList<Flight> searchFlight(String source, String dest, Date date){
+       return Flights.getInstance().searchFlights(source, dest, date);
     }
     
-    private void bookFlight(String source, String dest, Date date){
-        searchFlight(source, dest, date);
+    public ArrayList<Flight>  bookFlight(String source, String dest, Date date){
+        return searchFlight(source, dest, date);
     }
 
-    private void bookHotel(String dest, String roomType, String ammeneties){
-        searchHotel(dest, roomType, ammeneties);
+    public ArrayList<Hotel> bookHotel(String dest, String roomType, String pool, String gym){
+        return searchHotel(dest, roomType, pool, gym);
     }
 
     private void checkReservation(){
 
-    }
-
-    private void changeReservation(){
-
-    }
-
-    private void login(){
-        
     }
 
     public User createAccount(String firstName, String lastName, String username, String address, Date birthdate, String email){
