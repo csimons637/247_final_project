@@ -5,6 +5,7 @@ public class FlightBookingFacade {
     private static FlightBookingFacade flightBookings;
     private Flight flights;
     private Hotel hotels;
+    private User users;
     
     private FlightBookingFacade() {}
 
@@ -15,20 +16,20 @@ public class FlightBookingFacade {
         return flightBookings;
     }
 
-    private void searchHotel(){
-
+    private void searchHotel(String dest, String roomType, String ammeneties){
+        Hotels.getInstance().searchHotels(dest, roomType, ammeneties);
     }
 
-    private void searchFlight(String depart, String dest, Date date){
-        Flights.getInstance().searchFlights(depart, dest, date);
+    private void searchFlight(String source, String dest, Date date){
+        Flights.getInstance().searchFlights(source, dest, date);
     }
     
-    private void bookFlight(){
-
+    private void bookFlight(String source, String dest, Date date){
+        searchFlight(source, dest, date);
     }
 
-    private void bookHotel(){
-
+    private void bookHotel(String dest, String roomType, String ammeneties){
+        searchHotel(dest, roomType, ammeneties);
     }
 
     private void checkReservation(){
@@ -45,5 +46,9 @@ public class FlightBookingFacade {
 
     public User createAccount(String firstName, String lastName, String username, String address, Date birthdate, String email){
         Users.getInstance().addUser(firstName, lastName, username, address, birthdate, email);
+    }
+
+    public boolean hasUser(String userName) {
+        return hasUser(userName);
     }
 }

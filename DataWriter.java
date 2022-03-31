@@ -171,12 +171,13 @@ public class DataWriter extends DataConstants {
 
         ArrayList<UUID> friendIDs = booking.getFriends();
         JSONArray JSONFriends = new JSONArray();
+        JSONObject JSONFriend = new JSONObject();
 
         for (UUID id : friendIDs) {
-            JSONFriends.add(id.toString());
+            JSONFriend.put(PASSPORT_ID, id.toString());
+            JSONFriends.add(JSONFriend);
+            bookingDetails.put(ADDL_PPL, JSONFriends);        
         }
-
-        bookingDetails.put(ADDL_PPL, JSONFriends);        
 
         return bookingDetails;
     }
@@ -233,12 +234,5 @@ public class DataWriter extends DataConstants {
         }
 
         return hotelDetails;
-    }
-
-    public static void main(String args[]) {
-        saveUsers();
-        saveFlights();
-        saveHotels();
-        saveBookings();
     }
 }

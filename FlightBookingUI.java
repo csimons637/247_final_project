@@ -7,8 +7,7 @@ import java.util.Scanner;
 public class FlightBookingUI {
     private static final String STARTUP_MESSAGE = "Welcome Guest!";
     private String[] choices = {"Book a flight", "Book a hotel", "Check any existing reservations",
-                                "Change/Cancel any existing reservations", "Create an account",
-                                "Quit"};
+                                "Create an account", "Quit"};
     private Scanner scanner;
     private FlightBookingFacade flightbooking;
 
@@ -30,7 +29,7 @@ public class FlightBookingUI {
                 continue;
             }
 
-            if(commandChoice == choices.length -1) break;
+            if(commandChoice == choices.length - 1) break;
 
             switch(commandChoice) {
                 case(0):
@@ -43,9 +42,6 @@ public class FlightBookingUI {
                     checkReservation();
                     break;
                 case(3):
-                    changeReservation();
-                    break;
-                case(4):
                     createAccount();
                     break;        
             }
@@ -96,10 +92,10 @@ public class FlightBookingUI {
                 break;
             }
         }
-        ArrayList<Flight> flights =  FlightBookingFacade.getInstance().searchFlight(source, dest, date);
+        ArrayList<Flight> flights = FlightBookingFacade.getInstance().bookFlight(source, dest, date);
 
         for(Flight flight: flights) {
-            System.out.println(flight);
+            System.out.println(flights);
         }
     }
 
@@ -113,13 +109,16 @@ public class FlightBookingUI {
         System.out.println("\nWhat type of room would you like?");
         String roomType = scanner.nextLine();
 
-        System.out.println("\nWould you like the hotel to have a pool/gym?");
-        String ammeneties = scanner.nextLine();
+        System.out.println("\nWould you like the hotel to have a pool");
+        String pool = scanner.nextLine();
 
-        ArrayList<Hotel> hotels = FlightBookingFacade.getInstance().searchHotel(dest, roomType, ammeneties);
+        System.out.println("\nWould you like the hotel to have a gym?");
+        String gym = scanner.nextLine();
+
+       ArrayList<Hotel> hotels = FlightBookingFacade.getInstance().bookHotel(dest, roomType, pool, gym);
 
         for(Hotel hotel: hotels) {
-            System.out.println(hotel);
+            System.out.println(hotels);
         }
     }
 
@@ -131,25 +130,11 @@ public class FlightBookingUI {
             System.out.println("User name not found");
         }
 
-        ArrayList<Booking> bookings = FlightBookingFacade.getInstance().checkReservation(userName);
+       ArrayList<Booking> bookings = FlightBookingFacade.getInstance().checkReservation(userName);
 
         for(Booking booking: bookings){
-            System.out.println(booking);
+            System.out.println(bookings);
         }
-
-    }
-
-    private void changeReservation() {
-        System.out.println("\n-----What is your user name?------");
-        String userName = scanner.nextLine();
-
-        if(!FlightBookingFacade.getInstance().hasUser(userName)) {
-            System.out.println("User name not found");
-        }
-
-        System.out.println("\nWould you like to change the date or cancel?");
-
-
 
     }
 
@@ -176,6 +161,13 @@ public class FlightBookingUI {
         String email = scanner.nextLine();
 
         User currentUser = FlightBookingFacade.getInstance().createAccount(firstName,lastName,userName,address,birthdate,email);
+        
+        System.out.println("Your account has been created!");
+    }
+
+    public static void main(String[] args) {
+        FlightBookingUI flightBookingUI = new FlightBookingUI();
+        flightBookingUI.run();
     }
 
     public static Date parseDate(String date) {
