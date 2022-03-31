@@ -100,7 +100,7 @@ public class FlightBookingUI {
         ArrayList<Flight> flights = FlightBookingFacade.getInstance().bookFlight(source, dest, date);
 
         for(Flight flight: flights) {
-            System.out.println(flight);
+            System.out.println(flight.toString());
         }
     }
 
@@ -123,7 +123,7 @@ public class FlightBookingUI {
        ArrayList<Hotel> hotels = FlightBookingFacade.getInstance().bookHotel(dest, roomType, pool, gym);
 
         for(Hotel hotel: hotels) {
-            System.out.println(hotel);
+            System.out.println(hotel.toString());
         }
     }
 
@@ -138,7 +138,7 @@ public class FlightBookingUI {
        ArrayList<Booking> bookings = FlightBookingFacade.getInstance().checkReservation(userName);
 
         for(Booking booking: bookings){
-            System.out.println(booking);
+            System.out.println(booking.toString());
         }
 
     }
