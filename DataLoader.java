@@ -66,7 +66,10 @@ public class DataLoader extends DataConstants {
                 flights.add(new Flight(flightID, flightNumber, planeType,
                                 airline, dest_airport, dep_airport, departDate,
                                 depart, arrive, seats));
-                System.out.println(flightID.toString());
+                // System.out.println(flightID.toString());
+                for(Flight flight: flights) {
+                    System.out.println(flight.toString());
+                }
             }
             reader.close();
             // return flights;
@@ -116,7 +119,10 @@ public class DataLoader extends DataConstants {
                 }
     
                 hotels.add(new Hotel(hotelName, hotelID, rooms, hasGym, hasPool));
-                System.out.println(hotelID.toString());
+                // System.out.println(hotelID.toString());
+                for(Hotel hotel: hotels) {
+                    System.out.println(hotel.toString());
+                }
             }
             reader.close();
             return hotels;

@@ -99,9 +99,9 @@ public class FlightBookingUI {
         }
         ArrayList<Flight> flights = FlightBookingFacade.getInstance().bookFlight(source, dest, date);
 
-        for(Flight flight: flights) {
-            System.out.println(flight.toString());
-        }
+        // for(Flight flight: flights) {
+        //     System.out.println(flight.toString());
+        // }
     }
 
 
@@ -122,9 +122,9 @@ public class FlightBookingUI {
 
        ArrayList<Hotel> hotels = FlightBookingFacade.getInstance().bookHotel(dest, roomType, pool, gym);
 
-        for(Hotel hotel: hotels) {
-            System.out.println(hotel.toString());
-        }
+        // for(Hotel hotel: hotels) {
+        //     System.out.println(hotel.toString());
+        // }
     }
 
     private void checkReservation() {
