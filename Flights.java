@@ -37,7 +37,7 @@ public class Flights {
     public ArrayList<Flight> searchFlights(String source, String dest, Date date) {
         ArrayList<Flight> flights = new ArrayList<Flight>();
             for(Flight flight : flightsList) {
-                if (flight.getDeparture().equals(source) & flight.getDestination().equals(dest) & flight.getDepDate() == date) {
+                if (flight.getDeparture().equals(source) && flight.getDestination().equals(dest) && flight.getDepDate() == date) {
                     flights.add(flight);
                 }
             }
