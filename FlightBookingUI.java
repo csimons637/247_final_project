@@ -7,7 +7,7 @@ import java.util.Scanner;
 public class FlightBookingUI {
     private static final String STARTUP_MESSAGE = "Welcome Guest!";
     private String[] choices = {"Book a flight", "Book a hotel", "Check any existing reservations",
-                                "Create an account", "Quit"};
+                                "Create an account", "Print Iternary","Quit"};
     private Scanner scanner;
     private FlightBookingFacade flightbooking;
 
@@ -43,7 +43,10 @@ public class FlightBookingUI {
                     break;
                 case(3):
                     createAccount();
-                    break;        
+                    break;    
+                case(4):
+                    printIternary();
+                    break;    
             }
 
         }
@@ -109,10 +112,10 @@ public class FlightBookingUI {
         System.out.println("\nWhat type of room would you like?");
         String roomType = scanner.nextLine();
 
-        System.out.println("\nWould you like the hotel to have a pool");
+        System.out.println("\nWould you like the hotel to have a pool(Y/N)?");
         String pool = scanner.nextLine();
 
-        System.out.println("\nWould you like the hotel to have a gym?");
+        System.out.println("\nWould you like the hotel to have a gym(Y/N)?");
         String gym = scanner.nextLine();
 
        ArrayList<Hotel> hotels = FlightBookingFacade.getInstance().bookHotel(dest, roomType, pool, gym);
@@ -163,6 +166,10 @@ public class FlightBookingUI {
         User currentUser = FlightBookingFacade.getInstance().createAccount(firstName,lastName,userName,address,birthdate,email);
         
         System.out.println("Your account has been created!");
+    }
+
+    private void printIternary(){
+        
     }
 
     public static void main(String[] args) {
