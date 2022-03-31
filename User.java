@@ -71,7 +71,6 @@ abstract class User {
     }
 
     public ArrayList<Passport> getFriends() {
-        // This feels wrong, ask Portia
         return this.friends;
     }
 }
