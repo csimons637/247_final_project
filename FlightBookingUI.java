@@ -12,6 +12,9 @@ public class FlightBookingUI {
                                 "Create an account", "Print Iternary","Quit"};
     private Scanner scanner;
     private FlightBookingFacade flightbooking;
+    ArrayList<Flight> flights = new ArrayList<Flight>();
+    ArrayList<Hotel> hotels = new ArrayList<Hotel>();
+    ArrayList<Booking> bookings = new ArrayList<Booking>();
 
     FlightBookingUI(){
         scanner = new Scanner(System.in);
@@ -97,7 +100,7 @@ public class FlightBookingUI {
                 break;
             }
         }
-        ArrayList<Flight> flights = FlightBookingFacade.getInstance().bookFlight(source, dest, date);
+        this.flights = FlightBookingFacade.getInstance().bookFlight(source, dest, date);
 
         // for(Flight flight: flights) {
         //     System.out.println(flight.toString());
@@ -120,7 +123,7 @@ public class FlightBookingUI {
         System.out.println("\nWould you like the hotel to have a gym(Y/N)?");
         String gym = scanner.nextLine();
 
-       ArrayList<Hotel> hotels = FlightBookingFacade.getInstance().bookHotel(dest, roomType, pool, gym);
+       this.hotels = FlightBookingFacade.getInstance().bookHotel(dest, roomType, pool, gym);
 
         // for(Hotel hotel: hotels) {
         //     System.out.println(hotel.toString());
@@ -135,7 +138,7 @@ public class FlightBookingUI {
             System.out.println("User name not found");
         }
 
-       ArrayList<Booking> bookings = FlightBookingFacade.getInstance().checkReservation(userName);
+       this.bookings = FlightBookingFacade.getInstance().checkReservation(userName);
 
         for(Booking booking: bookings){
             System.out.println(booking.toString());
@@ -173,7 +176,16 @@ public class FlightBookingUI {
     private void printIternary(){
         
         try (FileWriter writer = new FileWriter("itenerary.txt")) {
-            
+            writer.write("Your flights:\n");
+            for (Flight f : this.flights) {
+                writer.write(f.toString() + '\n');
+            }
+
+            writer.write("\nYour hotel:\n");
+            for (Hotel h : this.hotels) {
+                writer.write(h.toString() + '\n');
+            }
+
         } catch (IOException e) {
             e.printStackTrace();
         }
