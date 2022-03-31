@@ -23,6 +23,16 @@ abstract class User {
         this.userID = id;
     }
 
+    public User(String firstName, String lastName, String username, String address, Date birthdate, String email) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.username = username;
+        this.address = address;
+        this.email = email;
+        this.birthdate = birthdate;
+        this.userID = UUID.randomUUID();
+    }
+
     public String toString() {
         String output = "User ID: " + this.userID.toString() + '\n';
         output += "Name:" + this.firstName + " ";
