@@ -19,4 +19,8 @@ public class Bookings {
         return null;
     }
 
+	public static ArrayList<Booking> getInstance(String userName) {
+		return null;
+	}
+
 }
