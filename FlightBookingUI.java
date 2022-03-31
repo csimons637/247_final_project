@@ -7,8 +7,7 @@ import java.util.Scanner;
 public class FlightBookingUI {
     private static final String STARTUP_MESSAGE = "Welcome Guest!";
     private String[] choices = {"Book a flight", "Book a hotel", "Check any existing reservations",
-                                "Change/Cancel any existing reservations", "Create an account",
-                                "Quit"};
+                                "Create an account", "Quit"};
     private Scanner scanner;
     private FlightBookingFacade flightbooking;
 
@@ -43,9 +42,6 @@ public class FlightBookingUI {
                     checkReservation();
                     break;
                 case(3):
-                    changeReservation();
-                    break;
-                case(4):
                     createAccount();
                     break;        
             }
@@ -96,10 +92,10 @@ public class FlightBookingUI {
                 break;
             }
         }
-        ArrayList<Flight> flights = FlightBookingFacade.getInstance().searchFlight(source, dest, date);
+        ArrayList<Flight> flights = FlightBookingFacade.getInstance().bookFlight(source, dest, date);
 
         for(Flight flight: flights) {
-            System.out.println(flight);
+            System.out.println(flights);
         }
     }
 
@@ -119,10 +115,10 @@ public class FlightBookingUI {
         System.out.println("\nWould you like the hotel to have a gym?");
         String gym = scanner.nextLine();
 
-       ArrayList<Hotel> hotels = FlightBookingFacade.getInstance().searchHotel(dest, roomType, pool, gym);
+       ArrayList<Hotel> hotels = FlightBookingFacade.getInstance().bookHotel(dest, roomType, pool, gym);
 
         for(Hotel hotel: hotels) {
-            System.out.println(hotel);
+            System.out.println(hotels);
         }
     }
 
@@ -137,30 +133,8 @@ public class FlightBookingUI {
        ArrayList<Booking> bookings = FlightBookingFacade.getInstance().checkReservation(userName);
 
         for(Booking booking: bookings){
-            System.out.println(booking);
+            System.out.println(bookings);
         }
-
-    }
-
-    private void changeReservation() {
-        System.out.println("\n-----What is your user name?------");
-        String userName = scanner.nextLine();
-
-        if(!FlightBookingFacade.getInstance().hasUser(userName)) {
-            System.out.println("User name not found");
-        }
-
-        System.out.println("\nWould you like to change the date or cancel?");
-
-        String[] reservationChoices = {"Change reservation", "Cancel Reservation"};
-        for(int i = 0; i < reservationChoices.length; i++) {
-            System.out.println((i+1) + " . " +reservationChoices[i]);
-        }
-        System.out.println("\n");
-
-        String choice = scanner.nextLine();
-        int choices = Integer.parseInt(choice) - 1;
-
 
     }
 
