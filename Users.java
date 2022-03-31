@@ -18,9 +18,11 @@ public class Users {
 
     public boolean haveUser(String keyword){
         for (User user : users) {
-            
+            if(user.getUsername().equals(keyword)){
+                return true;
+            }
         }
-        return true;
+        return false;
     }
 
     public ArrayList<User> getAllUsers() {
