@@ -24,12 +24,6 @@ class DataLoaderTest {
         DataWriter.saveUsers();
     }
 
-    // @AfterEach
-    // public void tearDown() {
-    //     Users.getInstance().getAllUsers().clear();
-    //     DataWriter.saveUsers();
-    // }
-
 // Test cases below
 
     @Test
