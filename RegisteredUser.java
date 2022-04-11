@@ -14,10 +14,14 @@ public class RegisteredUser extends User {
     private int luggage;
     private Booking booking;
 
-    public RegisteredUser(UUID id, String firstName, String lastName, String username, String address, Date birthdate, 
+    public RegisteredUser(UUID id, String firstName, String lastName, String username, String address, Date date, 
                           String email, ArrayList<Passport> friends) {
-        super(id, firstName, lastName, username, address, birthdate, email, friends);
-        this.birthdate = birthdate;
+        super(id, firstName, lastName, username, address, date, email, friends);
+        this.birthdate = date;
+    }
+
+    public RegisteredUser(UUID userID2, String firstName, String lastName, String username2, String address,
+            String string, String email2, ArrayList<Passport> friendsList) {
     }
 
     public void setUserName() {
