@@ -1,8 +1,9 @@
 import static org.junit.jupiter.api.Assertions.*;
 
-import java.sql.Date;
+
 import java.util.ArrayList;
 import java.util.UUID;
+import java.util.Date;
 
 import org.junit.Test;
 import org.junit.jupiter.api.AfterEach;
@@ -16,11 +17,13 @@ public class UserTest {
     public void setup() {
         userList.clear();
         UUID userID = UUID.randomUUID();
+        Date date = new Date();
         ArrayList<Passport> friendsList = DataLoader.getAllPassports();
-        userList.add(new RegisteredUser(userID, "Matt", "Crowe", "M_Crowe", "6 Holly Ct", "06-11-1998", "mcrowe@gmail.com", friendsList));
-        userList.add(new RegisteredUser(userID, "Rebekah", "Crowe", "R_Crowe", "6 Holly Ct", "01-02-1998","rcrowe@gmail.com", friendsList));
+        userList.add(new RegisteredUser(userID, "Matt", "Crowe", "M_Crowe", "6 Holly Ct", date, "mcrowe@gmail.com", friendsList));
+        userList.add(new RegisteredUser(userID, "Rebekah", "Crowe", "R_Crowe", "6 Holly Ct", date,"rcrowe@gmail.com", friendsList));
         DataWriter.saveUsers();
     }
+    
 //Test cases
     @Test
     public void testHaveUserOne(){

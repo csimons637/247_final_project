@@ -20,10 +20,6 @@ public class RegisteredUser extends User {
         this.birthdate = date;
     }
 
-    public RegisteredUser(UUID userID2, String firstName, String lastName, String username2, String address,
-            String string, String email2, ArrayList<Passport> friendsList) {
-    }
-
     public void setUserName() {
 
     }
