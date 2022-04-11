@@ -23,25 +23,25 @@ public class UserTest {
     }
 //Test cases
     @Test
-    void testHaveUserOne(){
+    public void testHaveUserOne(){
         boolean hasMatt = users.haveUser("Matt");
         assertTrue(hasMatt);
     }
 
     @Test
-    void testHaveUserTwo(){
+    public void testHaveUserTwo(){
         boolean hasBeks = users.haveUser("Rebekah");
         assertTrue(hasBeks);
     }
 
     @Test
-    void testNoUser(){
+    public void testNoUser(){
         Boolean hasBailey = users.haveUser("bseymour");
         assertFalse(hasBailey);
     }
 
     @Test
-    void testUserNull(){
+    public void testUserNull(){
         boolean hasNull = users.haveUser(null);
         assertFalse(hasNull);
     }
